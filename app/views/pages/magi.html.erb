@@ -1,0 +1,20 @@
+<p>Her kommer det vel noe javascript etterhvert kan jeg anta meg</p> 
+
+<script type="application/javascript">
+    function draw() {
+        var canvas = document.getElementById("test1");
+        var context = canvas.getContext("2d");
+
+        context.fillStyle = "rgb(200,0,0)";
+        context.fillRect (10,10,55,50);
+
+        context.fillStyle = "rgba(0,0,200,0.5)";
+        context.fillRect (30,30,55,50);
+    }
+
+</script>
+
+<body onload="draw();">
+    <canvas id="test1">
+    </canvas>
+</body>
