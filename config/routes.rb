@@ -2,6 +2,10 @@ Tidlaus::Application.routes.draw do
   get "pages/index"
 
   root :to => "pages#index"
+
+    match "/about", :to => "pages#about"
+    match "/magi", :to => "pages#magi"
+ # about :to => "pages#about"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
