@@ -1,10 +1,10 @@
-<header>
-    <%= image_tag("header.jpg", :alt => "The daleks are invading!") %>
+<header id="menu">
     <nav>
         <ul>
             <li><%= link_to "Heim", root_path %></li>
             <li><%= link_to "Om", about_path %></li>
             <li><%= link_to "Magi", magi_path %></li>
+            <li id="login"><%= link_to "Login", root_path %></li>
         </ul>
     </nav>
 </header>

@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'libv8'
 gem 'therubyracer'
 gem 'unicorn'
+gem 'haml'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,24 +1,19 @@
-.container {
-    width: 710px;
-  }
+.container{
+  width: 710px;
+  padding-top:20px;
+  margin:0 auto;
+}
 
 body {
-  background: #5ed698;
+  background: #A03033;
+  margin:0;
 }
 
-header {
-    padding-top: 20px;
-}
-
-header img {
-  padding: 1em;
-  background: #fff;
-}
 
 section {
   margin-top: 1em;
   font-size: 120%;
-  padding: 20px;
+  padding: 1px 30px 30px 30px ;
   background: #fff;
 }
 
@@ -26,84 +21,37 @@ section h1 {
   font-size: 200%;
 }
 
+/* Header */
+
+#menu {
+  display:block;
+  background-color: #000;
+  height: 30px; line-height: 30px;
+
+}
+
+#menu ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+#menu li {
+  display: inline;
+
+}
+#menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0 7px;
+  font-family: OpenSans, Helvetica, Arial, sans-serif;
+}
+#menu a:hover {
+  text-decoration: underline;
+}
+
+#menu li#login {
+  float:right;
+  padding-right: 7px;
+}
+
 /* Links */
-
-a {
-    color: #09c;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #069;
-    text-decoration: underline;
-}
-
-a:visited {
-    color: #069;
-  }
-
-/* listetingen */
-
-nav {
-    float:right;
-}
-
-nav {
-    background-color: white;
-    padding: 0 0.7em;
-    white-space: nowrap;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    list-style-type: none;
-    display: inline-block;
-    padding: 0.2em 0;
-}
-
-nav ul li a {
-    padding: 0 5px;
-    font-weight: bold;
-}
-
-nav ul li a:visited {
-    color:#09c;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* her fixer vi footer og header */
-
-
-footer {
-    text-align: center;
-    margin-top: 10px;
-    width: 710px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-footer nav {
-    float: none;
-}
-
-header  {
-    text-align: center;
-    margin-bottom: 10px;
-    width: 710px;
-    margin-left: auto;
-    margin-right:auto;
-}
-
-
-header img {
-    padding: 1em;
-    background: #fff;
-    width:50%;
-}
