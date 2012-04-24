@@ -33,6 +33,7 @@ section h1 {
 #menu ul {
   list-style-type: none;
   margin: 0;
+  padding:0;
 }
 
 #menu li {
