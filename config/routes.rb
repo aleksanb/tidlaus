@@ -1,10 +1,18 @@
 Tidlaus::Application.routes.draw do
-  get "pages/index"
+
+  resources :pages
+  resources :users
+  resources :session, :only => [:new, :create, :destroy]
 
   root :to => "pages#index"
+  
+  match "/about", :to => "pages#about"
+  match "/magi", :to => "pages#magi"
+  match "/signin", :to => "session#new"
+  match "/signout", :to => "session#destroy"
+  match '/signup', :to => "users#new"
 
-    match "/about", :to => "pages#about"
-    match "/magi", :to => "pages#magi"
+
  # about :to => "pages#about"
   # The priority is based upon order of creation:
   # first created -> highest priority.

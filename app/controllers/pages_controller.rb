@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
-  def index
-      @title = "Index"
-  end
+
+	def index
+	    @title = "Index"
+	end
 
     def about
         @title = "About"
