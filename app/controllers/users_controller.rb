@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
 	def index
-		@users = User.all
-		@title = "All users"
 	end
 
 	def show
@@ -11,26 +9,29 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-		@title = "Sign up"
+		@title = "sign up!"
 	end
 
 	def create
 		@user = User.new(params[:user])
-		if @user.save
-			redirect_to @user#, flash[:notice] = "Ovingssystembruker get!" #:flash => {success => "Ovingssystemhusk get!"}
+		@mightexist = User.find_by_name(params[:user][:name])
+		if @mightexist
+			redirect_to @mightexist, flash.now[:success] => "Velkommen tilbake!"
 		else
-			@title = "Sign up"
-			render 'new'
+			if @user.save
+				redirect_to @user, flash.now[:success] => "Velkommen til systemet"
+			end
 		end
+
 	end
 
-	#def edit
-	#end
+	def edit
+	end
 
-	#def update
-	#end
+	def update
+	end
 
-	#def destroy
-	#end
+	def destroy
+	end
 
 end

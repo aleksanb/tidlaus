@@ -1,16 +1,12 @@
 Tidlaus::Application.routes.draw do
 
-  resources :pages
-  resources :users
-  resources :session, :only => [:new, :create, :destroy]
 
-  root :to => "pages#index"
+  resources :users #begrense?
+
+  root :to => "users#new"
   
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
-  match "/signin", :to => "session#new"
-  match "/signout", :to => "session#destroy"
-  match '/signup', :to => "users#new"
 
 
  # about :to => "pages#about"
