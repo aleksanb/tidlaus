@@ -11,6 +11,7 @@ gem 'libv8'
 gem 'therubyracer'
 gem 'unicorn'
 gem 'haml'
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,6 +23,16 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+    gem 'rspec-rails'
+    gem 'faker', '0.3.1'
+end
+
+group :test do
+	gem 'rspec-rails'
+	gem 'factory_girl_rails', '1.0'
 end
 
 gem 'jquery-rails'
