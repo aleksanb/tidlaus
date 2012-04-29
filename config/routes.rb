@@ -3,7 +3,7 @@ Tidlaus::Application.routes.draw do
 
   resources :users #begrense?
 
-  root :to => "users#new"
+  root :to => "users#new" #"users#new"
   
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
