@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@user = User.find_by_name(params[:name])
 		@user = User.find(params[:id])
 	end
 
@@ -19,7 +20,10 @@ class UsersController < ApplicationController
 			redirect_to @mightexist, flash.now[:success] => "Velkommen tilbake!"
 		else
 			if @user.save
-				redirect_to @user, flash.now[:success] => "Velkommen til systemet"
+				redirect_to @user, flash.now[:success] => "Velkommen til systemet, #{@user.name}"
+			else
+				@title = "Prov paa nytt!"
+				render 'new', flash.now[:failure] => "Ugyldig navn!"
 			end
 		end
 

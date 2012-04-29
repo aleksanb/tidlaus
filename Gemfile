@@ -11,6 +11,7 @@ gem 'libv8'
 gem 'therubyracer'
 gem 'unicorn'
 gem 'haml'
+gem 'haml-rails'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 
 # Gems used only for assets and not required

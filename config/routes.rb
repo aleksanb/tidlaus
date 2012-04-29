@@ -3,11 +3,16 @@ Tidlaus::Application.routes.draw do
 
   resources :users #begrense?
 
-  root :to => "users#new" #"users#new"
   
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
 
+  match '/:id' => 'users#show'
+
+  root :to => "users#new" #"users#new"
+
+  match '/:id' => 'users#show'
+  #map.connect '/:name', :controller => 'users', :action => 'show'
 
  # about :to => "pages#about"
   # The priority is based upon order of creation:
