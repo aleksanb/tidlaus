@@ -1,20 +1,32 @@
 <p>Her kommer det vel noe javascript etterhvert kan jeg anta meg</p> 
 
 <script type="application/javascript">
+
     function draw() {
-        var canvas = document.getElementById("test1");
+        var canvas = document.getElementById("draw");
         var context = canvas.getContext("2d");
+      
+        context.beginPath();
+        context.moveTo(100, 20);
+        
+        // line 1
+        context.lineTo(200, 160);
 
-        context.fillStyle = "rgb(200,0,0)";
-        context.fillRect (10,10,55,50);
+        // quadratic curve
+        context.quadraticCurveTo(230, 200, 250, 120);
 
-        context.fillStyle = "rgba(0,0,200,0.5)";
-        context.fillRect (30,30,55,50);
-    }
+        // bezier curve
+        context.bezierCurveTo(290, -40, 300, 200, 400, 150);
 
+        // line 2
+        context.lineTo(500, 90);
+
+        context.lineWidth = 5;
+        context.strokeStyle = "blue";
+        context.stroke();
+    };
 </script>
 
 <body onload="draw();">
-    <canvas id="test1">
-    </canvas>
+    <canvas id="draw", width=500, height=300></canvas>
 </body>

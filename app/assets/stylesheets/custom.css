@@ -50,10 +50,3 @@ section h1 {
 #menu a:hover {
   text-decoration: underline;
 }
-
-#menu li#login {
-  float:right;
-  padding-right: 7px;
-}
-
-/* Links */

@@ -4,8 +4,9 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find_by_name(params[:name])
-		@user = User.find(params[:id])
+		#@user = User.find_by_name(params[:name])
+		@user = User.find_by_name(params[:id])
+		@exercises = @user.exercises
 	end
 
 	def new
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(params[:user])
-		@mightexist = User.find_by_name(params[:user][:name])
+		@mightexist = User.find_by_name((params[:user][:name]).downcase)
 		if @mightexist
 			redirect_to @mightexist, flash.now[:success] => "Velkommen tilbake!"
 		else

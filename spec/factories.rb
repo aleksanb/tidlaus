@@ -1,5 +1,15 @@
 Factory.define :user do |user|
 	user.name "foobarbazui"
-	user.password "foobara"
-	user.password_confirmation "foobara"
+end
+
+Factory.define :exercise do |exercise|
+	exercise.levert false
+	exercise.ferdig false
+	exercise.name "Digtek"
+	exercise.date Time.now
+	exercise.meta 1
+	exercise.ukedag 1
+	exercise.klokkeslett 8
+
+	exercise.association :user
 end

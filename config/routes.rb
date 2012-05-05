@@ -1,17 +1,21 @@
 Tidlaus::Application.routes.draw do
 
-
   resources :users #begrense?
+  resources :exercises
 
+  root :to => "users#new" #"users#new"
   
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
 
-  match '/:id' => 'users#show'
+  match '/:id' => redirect("/users/%{id}") #'users#show'
 
-  root :to => "users#new" #"users#new"
+  #match '/:name', :controller => 'users', :action => 'show'
 
-  match '/:id' => 'users#show'
+  #match '/:id' => 'users#show' #implementer proper /:name => 'users#show'
+
+
+
   #map.connect '/:name', :controller => 'users', :action => 'show'
 
  # about :to => "pages#about"
@@ -22,7 +26,7 @@ Tidlaus::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 
-  # Sample of named route:
+  # Sample of named route:e
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
