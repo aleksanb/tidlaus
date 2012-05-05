@@ -1,0 +1,17 @@
+!!!!! 5
+%html
+  %head
+    %title Velkommen til Tidlaus! | =@title
+    =csrf_meta_tags
+    !=render 'layouts/stylesheets'
+  %body
+    .menu
+      !=render 'layouts/header'
+    .wrapper
+      .section
+        -flash.each do |key, value|
+          =value
+        =yield
+      .push
+    .footer
+      !=render 'layouts/footer'
