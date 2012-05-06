@@ -11,7 +11,8 @@
       /-flash.each do |key, value|
       /  =value
       .section
-        =yield
+        .tocenterleft
+          =yield
       .push
     .footer
       !=render 'layouts/footer'

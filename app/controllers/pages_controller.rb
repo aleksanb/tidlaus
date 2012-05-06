@@ -12,4 +12,8 @@ class PagesController < ApplicationController
         @title = "Magi"
     end
 
+    def chat
+    	@title = "Chat"
+    end
+
 end

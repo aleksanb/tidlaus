@@ -1,12 +1,14 @@
 Tidlaus::Application.routes.draw do
 
   resources :users #begrense?
+  resources :pages
   resources :exercises
 
   root :to => "users#new" #"users#new"
   
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
+  match "/chat", :to => "pages#chat"
 
   match '/:id' => redirect("/users/%{id}") #'users#show'
 

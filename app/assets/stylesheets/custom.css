@@ -24,14 +24,16 @@ html, body {
 }
 
 .section {
-  width:700px;
+  width:710px;
   font-size:120%;
   padding: 1px 30px 30px 30px;
   margin: 0 auto;
+  text-align:left;
   background:#fff;
 }
 
 .section h1 {
+  text-align:center;
   margin:0.5em;
   font-size:200%;
 }
@@ -66,7 +68,7 @@ html, body {
 /* footer css */
 
 .footer {
-  margin-left:20%;
+  text-align: center;
 }
 .footer li {
   display:inline;
