@@ -8,8 +8,8 @@
     .wrapper
       .menu
         !=render 'layouts/header'
-      /-flash.each do |key, value|
-      /  =value
+      -flash.each do
+        =value
       .section
         .tocenterleft
           =yield

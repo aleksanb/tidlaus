@@ -13,6 +13,7 @@
 #  klokkeslett :integer
 #  date        :datetime
 #  user_id     :integer
+#  antall      :integer
 #
 
 require 'spec_helper'

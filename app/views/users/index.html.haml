@@ -1,0 +1,4 @@
+%h1 All of users!
+%ul
+	-@users.each do |u|
+		%li= link_to u.name.capitalize, u

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430030143) do
+ActiveRecord::Schema.define(:version => 20120506035531) do
 
   create_table "exercises", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120430030143) do
     t.integer  "klokkeslett"
     t.datetime "date"
     t.integer  "user_id"
+    t.integer  "antall"
   end
 
   create_table "users", :force => true do |t|
