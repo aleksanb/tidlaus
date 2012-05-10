@@ -4,17 +4,16 @@
 			%td=f.label "Fag!" 
 			%td=f.text_field :name
 		%tr
-			%td=f.label "Ukedag"
-			%td=f.select(:ukedag, Exercise::Ukedager.map {|l| [l, Exercise::Ukedager.index(l)+1]}, {:include_blank => true})
-		%tr
-			%td=f.label "Klokkeslett"
-			%td=f.select(:klokkeslett, Exercise::Klokkeslett, {:include_blank => true})
+			%td= f.label "Frist"
+			%td= f.datetime_select :date
 		%tr
 			%td=f.label "Antall Ovinger"
-			%td=f.select(:antall, Exercise::AntallOvinger, {:include_blank => true}) #Implementer antall i model
+			%td=f.select(:antall, Exercise::AntallOvinger)
+
 		%tr
 			%td=f.label "Repeat frequency"
-			%td=f.select(:meta, Exercise::Metatag.map {|l| [l, Exercise::Metatag.index(l)+1]}, {:include_blank => true})
+			%td=f.select(:meta, Exercise::Metatag.map {|l| [l, Exercise::Metatag.index(l)+1]})
+
 		%tr
 			%td=f.submit "Submit"
 

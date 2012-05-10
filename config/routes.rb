@@ -3,14 +3,18 @@ Tidlaus::Application.routes.draw do
   resources :users #begrense?
   resources :pages
   resources :exercises
+  resources :links
 
-  root :to => "users#new" #"users#new"
+  root :to => "links#new" #"users#new" #"users#new"
   
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
   match "/chat", :to => "pages#chat"
 
-  match '/:id' => redirect("/users/%{id}") #'users#show'
+  match '/:id', :to => "links#show", :id => /[a-z0-9]{64}/
+  match '/:id', :to => "users#show"
+  #redirect("/links/%{id}")#, :constraints => { :id => "/\A[a-z0-9]{64}\z/i" }
+  #match '/:id' => redirect("/users/%{id}") #'users#show'
 
   #match '/:name', :controller => 'users', :action => 'show'
 

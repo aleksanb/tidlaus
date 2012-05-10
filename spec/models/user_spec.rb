@@ -36,7 +36,7 @@ describe User do
       
       before(:each) do
         @user = User.create(@attr)
-        @ex1 = Factory(:exercise, :user => @user)
+       # @ex1 = Factory(:exercise, :user => @user)
        # @ex2 = Factory(:exercise, :user => @user)
       end
 
@@ -58,7 +58,7 @@ describe User do
           @user.should respond_to(:exercise_feed)
         end
 
-        it "should include the users exercises" do
+/        it "should include the users exercises" do
           @user.exercise_feed.should include(@ex1)
         end
 
@@ -66,7 +66,7 @@ describe User do
           ex2 = Factory(:exercise, :user => Factory(:user, :name => "derper"))
           @user.exercise_feed.should_not include(ex2)
         end
-
+/
       end
 
     end

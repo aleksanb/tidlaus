@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ExerciseController do
+describe ExercisesController do
 
 end

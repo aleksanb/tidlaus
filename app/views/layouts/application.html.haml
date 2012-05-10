@@ -8,9 +8,10 @@
     .wrapper
       .menu
         !=render 'layouts/header'
-      -flash.each do
-        =value
       .section
+        -flash.each do |key, value|
+          .flash.key
+            =value
         .tocenterleft
           =yield
       .push

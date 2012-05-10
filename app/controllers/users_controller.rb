@@ -5,10 +5,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		#@user = User.find_by_name(params[:name])
 		@user = User.find_by_name(params[:id])
-		#session[:current_user] = @user
-		#@exercises = @user.exercises
+		session[:current_user] = @user.id
 		@exercise = Exercise.new
 
 	end

@@ -4,9 +4,7 @@
 	Her ligger det #{@user.exercises.size} ovinger.
 	%table
 		%th Navn
-		%th Ukedag
 		%th Antall
-		%th Klokkeslett
 		%th Skapt
 		%th Timer
 		%th Dager
@@ -15,19 +13,16 @@
 		-@user.exercises.each do |ex|
 			%tr
 				%td= ex.name.capitalize
-				%td= ex.ukedag
 				%td= ex.antall
-				%td= ex.klokkeslett
 				%td= ex.created_at
-				%td Timer
-				%td Dager
+				%td= ex.date.hour
+				%td= ex.date.day
 				%td= ex.levert
 				%td= ex.ferdig
 	
 
 -else
 	There doesn't seem to be anything here...
-%br/
 %h2 Legge til øvinger?
 
 =render 'exercises/exercise_form'

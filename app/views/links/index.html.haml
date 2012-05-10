@@ -1,0 +1,7 @@
+%h1 All of links!
+
+%table
+	-@links.each do |link|
+		%tr
+			%td= link.shorturl
+			%td= link.longurl

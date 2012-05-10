@@ -8,8 +8,7 @@ Factory.define :exercise do |exercise|
 	exercise.name "Digtek"
 	exercise.date Time.now
 	exercise.meta 1
-	exercise.ukedag 1
-	exercise.klokkeslett 8
+	exercise.antall 1
 
 	exercise.association :user
 end

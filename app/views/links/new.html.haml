@@ -1,0 +1,10 @@
+%h1 Ny link!
+
+=form_for(@link) do |f|
+	=f.label "Short Url"
+	%br/
+	www.
+	=f.text_field :shorturl
+	=f.submit "Lag Link!"
+
+=link_to "All of links!", links_path

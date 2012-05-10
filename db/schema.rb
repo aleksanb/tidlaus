@@ -11,20 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120506035531) do
+ActiveRecord::Schema.define(:version => 20120509201604) do
 
   create_table "exercises", :force => true do |t|
     t.string   "name"
     t.integer  "meta"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.boolean  "levert"
     t.boolean  "ferdig"
-    t.integer  "ukedag"
-    t.integer  "klokkeslett"
     t.datetime "date"
     t.integer  "user_id"
     t.integer  "antall"
+  end
+
+  create_table "links", :force => true do |t|
+    t.string   "shorturl"
+    t.string   "longurl"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
