@@ -11,7 +11,7 @@ Tidlaus::Application.routes.draw do
   match "/magi", :to => "pages#magi"
   match "/chat", :to => "pages#chat"
 
-  match '/:id', :to => "links#show", :id => /[a-z0-9]{64}/
+  match '/:id', :to => "links#show", :id => /[a-z0-9]{64,}/
   match '/:id', :to => "users#show"
   #redirect("/links/%{id}")#, :constraints => { :id => "/\A[a-z0-9]{64}\z/i" }
   #match '/:id' => redirect("/users/%{id}") #'users#show'

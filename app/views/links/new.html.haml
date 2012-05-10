@@ -3,8 +3,11 @@
 =form_for(@link) do |f|
 	=f.label "Short Url"
 	%br/
-	www.
+	http://
 	=f.text_field :shorturl
 	=f.submit "Lag Link!"
+	%br/
+	=f.label "Langlinkmultiplikator: "
+	=f.select(:length, (1..3).to_a)
 
 =link_to "All of links!", links_path

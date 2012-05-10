@@ -10,7 +10,8 @@
 #
 
 class Link < ActiveRecord::Base
-  attr_accessible :longurl, :shorturl
+  attr_accessible :longurl, :shorturl, :length
+  attr_accessor :length
 
 
   url_regex = /[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?$/i
@@ -22,7 +23,7 @@ class Link < ActiveRecord::Base
 
 
   def generatelink
-  	self.longurl = obfuscate(shorturl)
+  	self.longurl = obfuscate(shorturl)*2
   end
 
 
