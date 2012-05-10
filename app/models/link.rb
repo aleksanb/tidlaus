@@ -22,7 +22,7 @@ class Link < ActiveRecord::Base
 
 
   def generatelink
-  	self.longurl = secure_hash(shorturl)
+  	self.longurl = obfuscate(shorturl)
   end
 
 
