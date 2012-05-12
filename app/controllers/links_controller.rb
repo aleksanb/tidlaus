@@ -21,7 +21,7 @@ class LinksController < ApplicationController
         @title = "Lenkeforlengaren"
 		@link = Link.create(params[:link])
 		if @link.save
-			redirect_to root_path, :flash => { :success => "Suksess! Du skapte en lang link: www.tidla.us/#{@link.longurl} Denne gaar til #{urlhelper(@link)}" }
+			redirect_to root_path, :flash => { :success => "Suksess! Du skapte en lang link: www.tidla.us/#{@link.longurl} <br/> Denne gaar til #{urlhelper(@link)}" }
 		else
 			flash[:failure] = "Feilformatert Link :("
 			render 'new'

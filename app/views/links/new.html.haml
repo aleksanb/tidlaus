@@ -5,9 +5,8 @@
 	%br/
 	http://
 	=f.text_field :shorturl
+	=f.select(:length, (1..3).to_a)
 	=f.submit "Lag Link!"
 	%br/
-	=f.label "Langlinkmultiplikator: "
-	=f.select(:length, (1..3).to_a)
 
 =link_to "All of links!", links_path

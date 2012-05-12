@@ -1,7 +1,7 @@
 module LinksHelper
 
 	def urlhelper(link)
-		"http://www.#{link.shorturl}"
+		"http://#{link.shorturl}"
 	end
 
 	def urlhelper2(link)

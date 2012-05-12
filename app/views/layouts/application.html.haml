@@ -12,8 +12,8 @@
         !=render 'layouts/header'
       .section
         -flash.each do |key, value|
-          .flash.key
-            =value
+          .flash
+            =value.html_safe
         .tocenterleft
           =yield
       .push

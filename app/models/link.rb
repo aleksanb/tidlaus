@@ -23,17 +23,39 @@ class Link < ActiveRecord::Base
 
 
   def generatelink
-  	self.longurl = obfuscate(shorturl)*2
+    self.shorturl = strip(self.shorturl)
+  	self.longurl = dasloop(strip(shorturl)) #obfuscate(strip(shorturl))*length
   end
 
 
   private
-  	def obfuscate(url)
-  		secure_hash("#{Time.now.utc}--#{url}")
+
+    def dasloop(url)
+      len = self.length.to_i
+      oldurl = strip(url)
+      newurl = ""
+
+      len.times do |i|
+        newurl += obfuscate(url,i)
+      end
+
+      return newurl
+    end
+
+    def strip(url)
+      if url[0,4]=='www.'
+        url = url[4,url.length]
+      else
+        url
+      end
+    end
+
+  	def obfuscate(url,int)
+  		secure_hash("#{Time.now.utc}--#{url}--#{int}")
   	end
 
-	def secure_hash(string)
-		Digest::SHA2.hexdigest(string)
-	end
+  	def secure_hash(string)
+  		Digest::SHA2.hexdigest(string)
+  	end
 
 end

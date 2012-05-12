@@ -79,3 +79,24 @@ html, body {
   color:#13041D;
   text-decoration:none;
 }
+
+.flash {
+  margin: auto;
+  margin-top:15px;
+
+  border:2px solid green;
+  width:auto;
+  padding:7px;
+  text-align:center;
+  background-color: #f0f0f0;
+
+  word-wrap: break-word;
+}
+
+#tablerow {
+  word-wrap:break-word;
+}
+
+#maintable {
+  table-layout:fixed;
+}
