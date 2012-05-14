@@ -1,17 +1,22 @@
 Tidlaus::Application.routes.draw do
 
+
+
+    match '/py/', :to => "links#pycreate"
+
+  resources :links
   resources :users #begrense?
   resources :pages
   resources :exercises
-  resources :links
 
   root :to => "links#new" #"users#new" #"users#new"
   
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
   match "/chat", :to => "pages#chat"
+  match "/python/", :to => "pages#python"
 
-  match '/:id', :to => "links#show", :id => /[a-z0-9]{64,}/
+  match '/:id', :to => "links#redirect", :id => /[a-z0-9]{64,}/
   match '/:id', :to => "users#show"
   #redirect("/links/%{id}")#, :constraints => { :id => "/\A[a-z0-9]{64}\z/i" }
   #match '/:id' => redirect("/users/%{id}") #'users#show'

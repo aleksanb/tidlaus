@@ -1,15 +1,14 @@
-class LinksController < ApplicationController
+class LinksController < ApplicationController 
+    layout 'blank', :only => [:show]
 
-	def index
+    def index 
         @title = "Lenkeforlengaren"
 		@links = Link.all
 	end
 
 	def show
         @title = "Lenkeforlengaren"
-		@link = Link.find_by_longurl(params[:id])
-		redirect_to urlhelper(@link)
-		#redirect_to #'#{@link.shorturl}'
+		@link = Link.find(params[:id])
 	end
 
 	def new
@@ -27,4 +26,21 @@ class LinksController < ApplicationController
 			render 'new'
 		end
 	end
+
+    def pycreate
+
+        @link = Link.create(:shorturl => params[:shorturl], :length => params[:length])
+        if @link.save
+            redirect_to @link
+        else
+            redirect_to root_path
+        end
+
+    end
+
+    def redirect
+        @link = Link.find_by_longurl(params[:id])
+        redirect_to urlhelper(@link)
+    end
+
 end
