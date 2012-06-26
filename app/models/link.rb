@@ -43,7 +43,11 @@ class Link < ActiveRecord::Base
     end
 
     def strip(url)
-      if url[0,4]=='www.'
+      if url[0,11]=='http://www.'
+        url = url[11,url.length]
+      elsif url[0,7]=='http://'
+        url = url[7,url.length]
+      elsif url[0,4] == 'www.'
         url = url[4,url.length]
       else
         url
