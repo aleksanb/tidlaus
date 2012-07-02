@@ -29,6 +29,10 @@ group :development do
     gem 'faker', '0.3.1'
 end
 
+group :production do
+    gem 'unicorn'
+end
+
 group :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails', '1.0'
