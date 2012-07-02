@@ -15,6 +15,7 @@ Tidlaus::Application.routes.draw do
   match "/magi", :to => "pages#magi"
   match "/chat", :to => "pages#chat"
   match "/python/", :to => "pages#python"
+  match "/ajax/", :to => "pages#ajax"
 
   match '/:id', :to => "links#redirect", :id => /[a-z0-9]{64,}/
   match '/:id', :to => "users#show"

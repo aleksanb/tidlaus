@@ -1,6 +1,6 @@
 %h1 Lenkeforlengaren
 
-=form_for(@link) do |f|
+=form_for @link do |f|
 	=f.label "Short Url"
 	%br/
 	http://
@@ -10,3 +10,4 @@
 	%br/
 
 =link_to "All of links!", links_path
+
