@@ -1,11 +1,11 @@
 %ul
-	%li
-	= link_to "Heim", root_path
-	%li
-	= link_to "Om", about_path
-	%li
-	= link_to "Magi", magi_path
-	%li
-	= link_to "Chat", chat_path
-	%li
-	= link_to "Url lengthener", new_link_path
+	%li{active_page_class(root_path)}
+		= link_to "Heim", root_path
+	%li{active_page_class(about_path)}
+		= link_to "Om", about_path
+	%li{active_page_class(magi_path)}
+		= link_to "Magi", magi_path
+	%li{active_page_class(chat_path)}
+		= link_to "Chat", chat_path
+	%li{active_controller_class('links')}
+		= link_to "Url lengthener", new_link_path

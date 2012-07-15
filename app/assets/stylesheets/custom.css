@@ -101,3 +101,7 @@ html, body {
 #maintable {
   table-layout:fixed;
 }
+
+.active {
+	font-size:200%;
+}

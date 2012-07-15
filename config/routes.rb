@@ -9,7 +9,7 @@ Tidlaus::Application.routes.draw do
   resources :pages
   resources :exercises
 
-  root :to => "links#new" #"users#new" #"users#new"
+  root :to => "pages#index" #"users#new" #"users#new"
   
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
