@@ -1,22 +1,19 @@
 !!!!! 5
-=javascript_include_tag 'application'
 %html
-  %head
-    %title Velkommen til Tidlaus! | "#{@title}"
-    =csrf_meta_tags
-    !=render 'layouts/stylesheets'
-    =if Rails.env.production?
-      render 'layouts/ga'
-  %body
-    .wrapper
-      .menu
-        !=render 'layouts/header'
-      .section
-        -flash.each do |key, value|
-          .flash
-            =value.html_safe
-        .tocenterleft
-          =yield
-      .push
-    .footer
-      !=render 'layouts/footer'
+    %head
+        %title Velkommen til Tidlaus! | "#{@title}"
+        =csrf_meta_tags
+        =stylesheet_link_tag 'tidlaus'
+        =javascript_include_tag 'application'
+    %body
+        =render 'layouts/header'
+        .container
+            .row
+                .ninecol
+                    -flash.each do |key, value|
+                        .flash
+                        =value.html_safe
+                    =yield
+                .threecol.last.hide
+                    =yield :sidebar
+        =render 'layouts/footer'

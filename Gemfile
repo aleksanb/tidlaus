@@ -9,7 +9,6 @@ gem 'sqlite3'
 
 #gem 'unicorn'
 gem 'haml'
-gem 'haml-rails'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 
 # Gems used only for assets and not required
@@ -17,10 +16,7 @@ gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platform => :ruby
-
+  gem 'therubyracer'
   gem 'uglifier'
 end
 
