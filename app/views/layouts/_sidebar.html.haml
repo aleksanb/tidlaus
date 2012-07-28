@@ -1,7 +1,12 @@
 -fetch_recent_links(10)
-%h1 Most recent links
-%ul
-	-@recent_links.each_with_index do |link,index|
-		%li
-			=index
-			=link.shorturl
+%h1 Recent longurls
+%table
+	%tr
+		%th Url.
+		%th Longurl.
+	-@recent_links.each do |link|
+		%tr
+			%td=link.shorturl
+			%td=link_to 'view', link_path(link)
+
+=link_to 'all of links', links_path

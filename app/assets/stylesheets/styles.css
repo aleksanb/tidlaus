@@ -8,11 +8,19 @@
   font-family: OpenSans, Helvetica, Arial, sans-serif;
 } */
 
+@font-face {
+    font-family: League Gothic;
+    font-face: League Gothic; 
+    src: url('assets/leaguegothic.otf') format('opentype');
+    }
+
+
 body {
 	font-size:14px;
 	font-family:Helvetica, Arial, sans-serif;
 }
 
+/*
 p {
 	font-family:'Museo Slab';
 }
@@ -71,7 +79,7 @@ html, body {
 }
 .topmenu li {
   display: inline;
-  border-right:2px solid #A03033;
+  border-right:1px solid #A03033;
   margin-right:10px;
   padding-right:10px;
   font-size:130%;
@@ -100,7 +108,7 @@ html, body {
 }
 
 h1 {
-	border-bottom:2px solid #A03033;
+	border-bottom:1px solid #A03033;
 	margin-bottom:10px;
 }
 
@@ -109,8 +117,20 @@ h1 {
 }
 
 .footer {
-	margin-top:10%;
-	border-top:2px solid #A03033;
+	margin-top:15%;
+	border-top:1px solid #A03033;
+}
+
+#title {
+	border-bottom:1px solid #A03033;
+	margin-bottom:5px;
+}
+
+#title h1{
+	display:inline;
+	border-bottom:none;
+	font-size:300%;
+
 }
 
 /* footer css *

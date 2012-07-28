@@ -12,7 +12,7 @@ module ApplicationHelper
 
 
 	def fetch_recent_links(howmany)
-		@recent_links = Link.last(howmany)
+		@recent_links = Link.order("created_at DESC").limit(howmany)
 	end
-	
+
 end
