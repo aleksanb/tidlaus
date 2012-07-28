@@ -2,12 +2,12 @@
 /* ! Layout for desktop version   */
 /* ============================== */
 
-	/* main css *
+	/* main css */
 
 * {
-  margin: 0;
   font-family: OpenSans, Helvetica, Arial, sans-serif;
 }
+/*
 
 html, body {
   height: 100%;
@@ -42,32 +42,60 @@ html, body {
   font-size:200%;
 }
 
-/* menu tags *
+/* topmenu tags */
 
-.menu {
-  display:block;
-  height: 30px; line-height: 30px;
-  margin-bottom:20px;
-  text-align:center;
+.topmenu {
   background: #25271E;
+  color:white;
+  margin-bottom:20px;
 }
-.menu ul {
+.topmenu ul {
   list-style-type: none;
-  margin: 0;
-  padding:1px;
-  padding-left:2px;
+  padding:5px;
+  margin-left:10px;
 }
-.menu li {
+.topmenu li {
   display: inline;
+  border-right:2px solid #A03033;
+  margin-right:10px;
+  padding-right:10px;
+  font-size:130%;
 }
 
-.menu a {
+.topmenu li:last-child {
+	border:none;
+}
+/*
+.topmenu a {
   color: white;
   text-decoration: none;
   padding: 0 7px;
 }
-.menu a:hover {
+.topmenu a:hover {
   text-decoration: underline;
+} */
+
+.topmenu a {
+	color:white;
+	text-decoration:none;
+	border:2px;
+}
+.topmenu a:hover {
+	text-decoration:underline;
+}
+
+h1 {
+	border-bottom:2px solid #A03033;
+	margin-bottom:10px;
+}
+
+.sidebar ul {
+	list-style-type:none;
+}
+
+.footer {
+	margin-top:10%;
+	border-top:2px solid #A03033;
 }
 
 /* footer css *
@@ -105,9 +133,10 @@ html, body {
 #maintable {
   table-layout:fixed;
 }
-
+*/
 .active {
-	font-size:200%;
+	font-size:140%;
+	font-weight:bold;
 }
 	
 

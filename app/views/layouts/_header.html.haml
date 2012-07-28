@@ -1,10 +1,17 @@
-.container.header
+.container
 	.row
 		.twelvecol.last
-			%h1 Velkommen til tidlaus!
-			%nav
-				= link_to "Heim", root_path, active_page_class(root_path)
-				= link_to "Om", about_path, active_page_class(root_path)
-				= link_to "Magi", magi_path, active_page_class(root_path)
-				= link_to "Chat", chat_path, active_page_class(root_path)
-				= link_to "Url lengthener", new_link_path, active_controller_class('links')
+			=image_tag 'rails.png'
+	.row.topmenu
+		.twelvecol.last
+			%ul
+				%li
+					= link_to "Heim", root_path, active_page_class(root_path)
+				%li
+					= link_to "Om", about_path, active_page_class(about_path)
+				%li
+					= link_to "Magi", magi_path, active_page_class(magi_path)
+				%li
+					= link_to "Chat", chat_path, active_page_class(chat_path)
+				%li
+					= link_to "Longurl", new_link_path, active_controller_class('links')

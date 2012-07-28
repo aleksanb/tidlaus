@@ -1,10 +1,11 @@
 !!!!! 5
 %html
     %head
-        %title Velkommen til Tidlaus! | "#{@title}"
+        %title #{@title} | Tidlaus
         =csrf_meta_tags
         =stylesheet_link_tag 'tidlaus'
         =javascript_include_tag 'application'
+        %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, minimum-scale=1"}
     %body
         =render 'layouts/header'
         .container
@@ -12,8 +13,8 @@
                 .ninecol
                     -flash.each do |key, value|
                         .flash
-                        =value.html_safe
+                            =value.html_safe
                     =yield
-                .threecol.last.hide
-                    =yield :sidebar
+                .threecol.last.hide.sidebar
+                    =render 'layouts/sidebar'
         =render 'layouts/footer'
