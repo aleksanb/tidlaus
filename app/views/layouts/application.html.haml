@@ -10,11 +10,11 @@
         =render 'layouts/header'
         .container
             .row
-                .ninecol
+                .eightcol
                     -flash.each do |key, value|
                         .flash
                             =value.html_safe
                     =yield
-                .threecol.last.hide.sidebar
+                .fourcol.last.hide.sidebar
                     =render 'layouts/sidebar'
         =render 'layouts/footer'

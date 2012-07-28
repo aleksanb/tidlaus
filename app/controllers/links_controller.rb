@@ -4,6 +4,7 @@ class LinksController < ApplicationController
     def index 
         @title = "Lenkeforlengaren"
 		@links = Link.all
+
 	end
 
 	def show

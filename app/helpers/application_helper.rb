@@ -9,4 +9,10 @@ module ApplicationHelper
 		return :class => css_class if params[:controller] == con
 		return {}
 	end
+
+
+	def fetch_recent_links(howmany)
+		@recent_links = Link.last(howmany)
+	end
+	
 end

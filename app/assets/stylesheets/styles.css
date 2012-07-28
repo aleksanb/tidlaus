@@ -2,11 +2,26 @@
 /* ! Layout for desktop version   */
 /* ============================== */
 
-	/* main css */
+	/* main css 
 
 * {
   font-family: OpenSans, Helvetica, Arial, sans-serif;
+} */
+
+body {
+	font-size:14px;
+	font-family:Helvetica, Arial, sans-serif;
 }
+
+p {
+	font-family:'Museo Slab';
+}
+
+@font-face {
+	font-family: 'Museo Slab';
+	src: url('');
+}
+
 /*
 
 html, body {
