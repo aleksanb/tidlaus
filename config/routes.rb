@@ -2,15 +2,17 @@ Tidlaus::Application.routes.draw do
 
 
 
-    match '/py/', :to => "links#pycreate"
+  match '/py/', :to => "links#pycreate"
 
   resources :links
   resources :users #begrense?
   resources :pages
-  resources :exercises
+  resources :sessions
 
   root :to => "pages#index" #"users#new" #"users#new"
   
+  match "/login", :to => "sessions#new", :as => "login"
+  match "/logout", :to => "sessions#destroy", :as => "logout"
   match "/kaizervirus", :to => "pages#kaizervirus"
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"

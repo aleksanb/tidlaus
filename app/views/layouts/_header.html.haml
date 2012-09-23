@@ -16,3 +16,11 @@
 					= link_to "Chat", chat_path, active_page_class(chat_path)
 				%li
 					= link_to "Longurl", new_link_path, active_controller_class('links')
+				- if logged_in
+					%li
+						= "Logget inn som #{current_user.name}" 
+					%li
+						= link_to "Logout", logout_path
+				- else
+					%li
+						= link_to "Login", login_path

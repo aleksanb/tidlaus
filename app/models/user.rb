@@ -28,8 +28,13 @@ class User < ActiveRecord::Base
   	name
   end
 
-  def exercise_feed
-  	Exercise.where("user_id = ?", id)
+
+  class << self
+
+    def authenticate(name)
+      user = find_by_name(name.downcase)
+    end
+
   end
 
 end
