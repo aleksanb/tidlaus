@@ -11,16 +11,18 @@
 class User < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :exercises, :dependent => :destroy
+  #has_many :exercises, :dependent => :destroy
 
-  username_regex = /\A[a-z0-9]*\z/i
+  #username_regex = /\A[a-z0-9]*\z/i
 
   validates :name, :presence => true,
-  					:uniqueness => {:case_sensitive => false},
-  					:format => {:with => username_regex}
+  					:uniqueness => {:case_sensitive => false}#,
+  					#:format => {:with => username_regex}
 
 
-  before_save { |user| user.name = user.name.downcase }
+  before_save do |user| 
+    user.name = user.name.downcase
+  end
 
   def to_param
   	name

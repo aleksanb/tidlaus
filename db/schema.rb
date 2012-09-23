@@ -11,19 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509201604) do
-
-  create_table "exercises", :force => true do |t|
-    t.string   "name"
-    t.integer  "meta"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "levert"
-    t.boolean  "ferdig"
-    t.datetime "date"
-    t.integer  "user_id"
-    t.integer  "antall"
-  end
+ActiveRecord::Schema.define(:version => 20120923181235) do
 
   create_table "links", :force => true do |t|
     t.string   "shorturl"
