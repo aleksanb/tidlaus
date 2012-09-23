@@ -70,7 +70,6 @@ html, body {
 .topmenu {
   background: #25271E;
   color:white;
-  margin-bottom:20px;
 }
 .topmenu ul {
   list-style-type: none;
@@ -88,15 +87,6 @@ html, body {
 .topmenu li:last-child {
 	border:none;
 }
-/*
-.topmenu a {
-  color: white;
-  text-decoration: none;
-  padding: 0 7px;
-}
-.topmenu a:hover {
-  text-decoration: underline;
-} */
 
 .topmenu a {
 	color:white;
@@ -133,47 +123,43 @@ h1 {
 
 }
 
-/* footer css *
-
-.footer {
-  text-align: center;
-}
-.footer li {
-  display:inline;
-  color:#13041D;
-}
-
-.footer a {
-  color:#13041D;
-  text-decoration:none;
-}
-
-.flash {
-  margin: auto;
-  margin-top:15px;
-
-  border:2px solid green;
-  width:auto;
-  padding:7px;
-  text-align:center;
-  background-color: #f0f0f0;
-
-  word-wrap: break-word;
-}
-
-#tablerow {
-  word-wrap:break-word;
-}
-
-#maintable {
-  table-layout:fixed;
-}
-*/
 .active {
 	font-size:140%;
 	font-weight:bold;
 }
-	
+
+.flash {
+    text-align:center;
+    margin: 10px 0px;
+    padding: 10px 0px;
+}
+
+.flash.failure {
+    border: 1px solid rgba(160, 48, 51, 1);
+}
+
+.flash.success {
+    border: 1px solid rgba(34, 139, 34, 1);
+}
+
+.container {
+    margin-top:10px;
+}
+
+.flashcontainer {
+    margin-bottom:-10px;
+}
+form {
+}
+
+form label {
+    width:20%;
+    float:left;
+}
+
+form input {
+    width:50%;
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */

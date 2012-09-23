@@ -17,4 +17,8 @@ class PagesController < ApplicationController
     	@title = "Chat"
     end
 
+    def kaizervirus
+        @title = "Kaizervirus"
+    end
+
 end

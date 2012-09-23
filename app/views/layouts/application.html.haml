@@ -1,20 +1,24 @@
 !!!!! 5
 %html
-    %head
-        %title #{@title} | Tidlaus
-        =csrf_meta_tags
-        =stylesheet_link_tag 'tidlaus'
-        =javascript_include_tag 'application'
-        %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, minimum-scale=1"}
+  %head
+    %title #{@title} | Tidlaus
+    = csrf_meta_tags
+    = stylesheet_link_tag 'tidlaus'
+    = javascript_include_tag 'application'
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, minimum-scale=1"}
     %body
-        =render 'layouts/header'
-        .container
-            .row
-                .eightcol
-                    -flash.each do |key, value|
-                        .flash
-                            =value.html_safe
-                    =yield
-                .fourcol.last.hide.sidebar
-                    =render 'layouts/sidebar'
-        =render 'layouts/footer'
+      =render 'layouts/header'
+      - unless flash.empty?
+        .container.flashcontainer
+          .row
+            .twelvecol.last
+              -flash.each do |key, value|
+                .flash{:class => key}
+                  =value.html_safe
+      .container
+        .row
+          .eightcol
+            = yield
+          .fourcol.last.hide.sidebar
+            = render 'layouts/sidebar'
+      = render 'layouts/footer'

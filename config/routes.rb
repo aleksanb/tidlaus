@@ -11,6 +11,7 @@ Tidlaus::Application.routes.draw do
 
   root :to => "pages#index" #"users#new" #"users#new"
   
+  match "/kaizervirus", :to => "pages#kaizervirus"
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
   match "/chat", :to => "pages#chat"
