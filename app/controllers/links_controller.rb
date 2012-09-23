@@ -23,7 +23,7 @@ class LinksController < ApplicationController
 		if @link.save
 			redirect_to new_link_path, :flash => { :success => "Suksess! Du skapte en lang link: www.tidla.us/#{@link.longurl} <br/> Denne gaar til #{urlhelper(@link)}" }
 		else
-			flash[:failure] = "Feilformatert Link :("
+			flash.now[:failure] = "Feilformatert Link :("
 			render 'new'
 		end
 	end
