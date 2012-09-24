@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 		if @user.save
 			flash[:success] = "Welcome, #{@user.name}"
+            session[:user_id] = @user.id
 			redirect_to root_path
 		else
 			flash.now[:failure] = "Something went wrong"
