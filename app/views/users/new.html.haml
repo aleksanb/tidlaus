@@ -1,8 +1,10 @@
 %h1 Velkommen til Tidlaus!
 
 =form_for(@user) do |f|
-	=f.label "Namn!"
-	#br
+	=f.label :name
 	=f.text_field :name
-	#br
+	=f.label :password
+	=f.password_field :password
+	=f.label :password_confirmation
+	=f.password_field :password_confirmation
 	=f.submit "Login!"

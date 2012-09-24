@@ -6,30 +6,22 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find_by_name(params[:id])
-		session[:current_user] = @user.id
-		@exercise = Exercise.new
-
 	end
 
 	def new
-		@user = User.new
 		@title = "sign up!"
+		@user = User.new
 	end
 
 	def create
 		@user = User.new(params[:user])
-		@mightexist = User.find_by_name((params[:user][:name]).downcase)
-		if @mightexist
-			redirect_to @mightexist, flash.now[:success] => "Velkommen tilbake!"
+		if @user.save
+			flash[:success] = "Welcome, #{@user.name}"
+			redirect_to root_path
 		else
-			if @user.save
-				redirect_to @user, flash.now[:success] => "Velkommen til systemet, #{@user.name}"
-			else
-				@title = "Prov paa nytt!"
-				render 'new', flash.now[:failure] => "Ugyldig navn!"
-			end
+			flash.now[:failure] = "Something went wrong"
+			render 'new'
 		end
-
 	end
 
 	def edit

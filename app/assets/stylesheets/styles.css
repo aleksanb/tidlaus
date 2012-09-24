@@ -68,14 +68,44 @@ html, body {
 /* topmenu tags */
 
 .topmenu {
-  background: #25271E;
+  background: rgba(37, 39, 30,0.9);
   color:white;
 }
+
+nav {
+  padding:5px;
+}
+
+nav a {
+  margin:5px;
+  font-size:100%;
+  /*border-right:10px solid #A03033;*/
+}
+
+.topmenu a {
+	color:white;
+	text-decoration:none;
+	border:2px;
+}
+
+.topmenu a:hover {
+	text-decoration:underline;
+}
+
+/*
+.loginbox {
+  display:inline-block;
+  float:right;
+  margin-right:10px;
+}
+
 .topmenu ul {
+  display:inline-block;
   list-style-type: none;
   padding:5px;
   margin-left:10px;
 }
+
 .topmenu li {
   display: inline;
   border-right:1px solid #A03033;
@@ -85,17 +115,16 @@ html, body {
 }
 
 .topmenu li:last-child {
-	border:none;
+  border:none;
 }
 
-.topmenu a {
-	color:white;
-	text-decoration:none;
-	border:2px;
-}
-.topmenu a:hover {
-	text-decoration:underline;
-}
+
+.topmenu ul:last-child {
+  margin-left:0px;
+  margin-right:auto;
+} */
+
+
 
 h1 {
 	border-bottom:1px solid #A03033;
@@ -124,7 +153,7 @@ h1 {
 }
 
 .active {
-	font-size:140%;
+	font-size:130%;
 	font-weight:bold;
 }
 
@@ -135,11 +164,13 @@ h1 {
 }
 
 .flash.failure {
-    border: 1px solid rgba(160, 48, 51, 1);
+    border: 1px solid rgba(160, 48, 51, 0.5);
+    background-color: rgba(160, 48, 51, 0.2);;
 }
 
 .flash.success {
-    border: 1px solid rgba(34, 139, 34, 1);
+    border: 1px solid rgba(34, 139, 34, 0.5);
+    background-color: rgba(34, 139, 34, 0.2);
 }
 
 .container {
@@ -148,7 +179,7 @@ h1 {
 
 .flashcontainer {
     margin-bottom:-10px;
-}
+}/*
 form {
 }
 
@@ -160,6 +191,7 @@ form label {
 form input {
     width:50%;
 }
+
 
 /* ============================= */
 /* ! Layout for mobile version   */

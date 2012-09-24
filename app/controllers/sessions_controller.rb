@@ -4,15 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	user = User.authenticate(params[:session][:name])
+  	user = User.authenticate(params[:session][:name],params[:session][:password])
   	if user.nil? 
-  		flash.now[:failure] = "Invalid email / password combination."
+  		flash.now[:failure] = "Invalid name / password combination."
   		render 'new'
   	else
   		session[:user_id] = user.id
   		flash[:success] = "Logged in successfully as #{user.name}"
   		redirect_to root_path
-  		#redirect_back_or user
   	end
   end
 

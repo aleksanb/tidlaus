@@ -5,7 +5,7 @@ Tidlaus::Application.routes.draw do
   match '/py/', :to => "links#pycreate"
 
   resources :links
-  resources :users #begrense?
+  resources :users
   resources :pages
   resources :sessions
 
@@ -13,6 +13,7 @@ Tidlaus::Application.routes.draw do
   
   match "/login", :to => "sessions#new", :as => "login"
   match "/logout", :to => "sessions#destroy", :as => "logout"
+
   match "/kaizervirus", :to => "pages#kaizervirus"
   match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
@@ -21,7 +22,7 @@ Tidlaus::Application.routes.draw do
   match "/ajax/", :to => "pages#ajax"
 
   match '/:id', :to => "links#redirect", :id => /[a-z0-9]{64,}/
-  match '/:id', :to => "users#show"
+  #match '/:id', :to => "users#show"
   #redirect("/links/%{id}")#, :constraints => { :id => "/\A[a-z0-9]{64}\z/i" }
   #match '/:id' => redirect("/users/%{id}") #'users#show'
 
