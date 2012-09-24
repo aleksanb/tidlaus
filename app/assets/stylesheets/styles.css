@@ -60,6 +60,10 @@ nav a:nth-last-child(-n+2) {
   text-decoration:underline;
 }
 
+.logout {
+  text-align:right;
+  max-width:100%;
+}
 
 h1 {
 	border-bottom:1px solid #A03033;
