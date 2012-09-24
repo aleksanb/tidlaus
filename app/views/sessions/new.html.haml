@@ -1,4 +1,4 @@
-%h1 Sign in
+%h1 Logg inn. 
 
 = form_for :session, :url => sessions_path do |f|
 	=f.label :name
@@ -6,3 +6,7 @@
 	=f.label :password
 	=f.password_field :password
 	=f.submit "sign in"
+
+%p
+	Ikke medlem? Bli med 
+	=link_to 'her!', new_user_path

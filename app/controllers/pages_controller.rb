@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-    layout 'blank', :only => [:about]
+    layout 'wide_application'
     
 	def index
 	    @title = "Index"
