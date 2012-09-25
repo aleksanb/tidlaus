@@ -15,4 +15,8 @@ module ApplicationHelper
 		@recent_links = Link.order("created_at DESC").limit(howmany)
 	end
 
+  def javascript(*args)
+    content_for(:tail) { javascript_include_tag(*args) }
+  end
+
 end

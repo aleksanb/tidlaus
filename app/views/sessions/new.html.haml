@@ -1,11 +1,9 @@
-%h1 Logg inn. 
+%h1 Log in. 
 
-= form_for :session, :url => sessions_path do |f|
-	=f.label :name
-	=f.text_field :name
-	=f.label :password
-	=f.password_field :password
-	=f.submit "sign in"
+= semantic_form_for :session, :url => sessions_path do |f|
+	=f.input :name
+	=f.input :password
+	=f.action :submit, :label => "Log in"
 
 %p
 	Ikke medlem? Bli med 

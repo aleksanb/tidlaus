@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :name, :password, :password_confirmation
+  attr_accessible :name, :password, :password_confirmation, :email
 
   #has_many :exercises, :dependent => :destroy
 
@@ -22,10 +22,12 @@ class User < ActiveRecord::Base
   					:uniqueness => {:case_sensitive => false}#,
   					#:format => {:with => username_regex}
   validates :password, :presence => true, :confirmation => true, :length => {:within => 6..40}
+  validates :email, :presence => true
 
 
   before_save do |user|
-    user.name = user.name.downcase
+    user.name.downcase!
+    user.email.downcase!
     encrypt_password
   end
 

@@ -12,6 +12,7 @@ gem 'haml'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 gem 'unicorn'
 gem 'declarative_authorization'
+gem 'formtastic'
 
 # Gems used only for assets and not required
 # in production environments by default.

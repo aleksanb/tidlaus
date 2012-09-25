@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120923185116) do
+ActiveRecord::Schema.define(:version => 20120925205809) do
 
   create_table "links", :force => true do |t|
     t.string   "shorturl"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120923185116) do
     t.datetime "updated_at",         :null => false
     t.string   "salt"
     t.string   "encrypted_password"
+    t.string   "email"
   end
 
 end

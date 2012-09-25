@@ -2,6 +2,9 @@
 	%section
 		%h1= current_user.name.capitalize
 		%p
+			Email: 
+			=current_user.email
+		%p
 			Du er logget inn som 
 			= link_to "#{current_user.name.capitalize}.", user_path(current_user)
 			Her er det foreløbig relativt sparst med tanke på hvor få ting som er i sidebaren. Håpentligvis kommer det nok features etter hvert slik at man vil begynne å benytte siden til vanlig i andre sammenhenger.

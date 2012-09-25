@@ -18,7 +18,7 @@ class Link < ActiveRecord::Base
 
   validates :shorturl, :presence => true, 
   						:format => {:with => url_regex}
-
+	validates :length, :presence => true
   before_save :generatelink
 
 
