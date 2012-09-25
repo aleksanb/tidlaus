@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-    layout 'wide_application'
     
 	def index
 	    @title = "Index"
+      render :layout => "wide"
 	end
 
     def about

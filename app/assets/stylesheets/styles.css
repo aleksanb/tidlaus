@@ -8,6 +8,10 @@
   font-family: OpenSans, Helvetica, Arial, sans-serif;
 } */
 
+* {
+  word-wrap:break-word;
+}
+
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -156,6 +160,7 @@ form input {
 
 
 /* ========================================== */
+
 /* ! Provide higher res assets for iPhone 4   */
 /* ========================================== */
 

@@ -1,5 +1,5 @@
 class LinksController < ApplicationController 
-    layout 'blank', :only => [:show]
+    #layout 'blank', :only => [:show]
 
     def index 
         @title = "Lenkeforlengaren"
@@ -21,7 +21,7 @@ class LinksController < ApplicationController
         @title = "Lenkeforlengaren"
 		@link = Link.create(params[:link])
 		if @link.save
-			redirect_to new_link_path, :flash => { :success => "Suksess! Du skapte en lang link: www.tidla.us/#{@link.longurl} <br/> Denne gaar til #{urlhelper(@link)}." }
+			redirect_to @link, :flash => { :success => "Suksess! Du skapte en lang link!" }
 		else
 			flash.now[:failure] = "Feilformatert Link :("
 			render 'new'
@@ -31,7 +31,7 @@ class LinksController < ApplicationController
     def pycreate
         @link = Link.create(:shorturl => params[:shorturl], :length => params[:length])
         if @link.save
-            redirect_to @link
+          render :show, :layout => false
         else
             redirect_to root_path
         end
