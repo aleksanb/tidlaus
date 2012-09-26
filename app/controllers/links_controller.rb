@@ -21,9 +21,10 @@ class LinksController < ApplicationController
         @title = "Lenkeforlengaren"
 		@link = Link.create(params[:link])
 		if @link.save
-			redirect_to @link, :flash => { :success => "Suksess! Du skapte en lang link!" }
+			flash[:success] = "<span class='black'>Success!</span> You created a long link!".html_safe
+            redirect_to @link
 		else
-			flash.now[:failure] = "Feilformatert Link :("
+			flash.now[:failure] = "<span class='black'>Invalid</span> link data.".html_safe
 			render 'new'
 		end
 	end
@@ -40,6 +41,11 @@ class LinksController < ApplicationController
 
     def redirect
         @link = Link.find_by_longurl(params[:id])
+        logger.debug "link har naa x views"
+        logger.debug @link.views
+        @link.update_attributes!(:views => @link.views+1)
+        logger.debug "naa skal den ha +1, altsaa"
+        logger.debug @link.views
         redirect_to urlhelper(@link)
     end
 

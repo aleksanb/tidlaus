@@ -6,18 +6,20 @@ class SessionsController < ApplicationController
   def create
   	user = User.authenticate(params[:session][:name],params[:session][:password])
   	if user.nil? 
-  		flash.now[:failure] = "Invalid username / password combination."
+  		flash.now[:failure] = "<span class='black'>Invalid</span> login details.".html_safe
   		render 'new'
   	else
   		session[:user_id] = user.id
-  		flash[:success] = "Logged in successfully as #{user.name}."
-  		redirect_to root_path
+  		flash[:login] = "Logged in as <span class='black'>#{user.name}.</span>".html_safe
+  		redirect_to user
   	end
   end
 
   def destroy
   	session[:user_id] = nil
-  	flash[:success] = "Signed out successfully."
-  	redirect_to root_path
+  	flash[:success] = "Logged <span class='black'>out.</span>".html_safe
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 end

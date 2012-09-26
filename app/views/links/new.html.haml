@@ -1,8 +1,12 @@
-%h1 Lenkeforlengaren
+-content_for :sidebar do 
+	= render 'layouts/sidebar'
 
-= semantic_form_for @link do |f|
-	=f.input :shorturl, :label => "Short url. http://"
-	=f.input :length, :as => :select, :collection => [1,2,3]
-	=f.action :submit
-
-=link_to "All of links!", links_path
+%article
+	%header
+		%h1 Lenkeforlengaren
+	%section
+		%p
+			= semantic_form_for @link do |f|
+				=f.input :shorturl, :label => "http://"
+				=f.input :length, :as => :select, :collection => [1,2,3]
+				=f.action :submit

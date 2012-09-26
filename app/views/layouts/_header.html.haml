@@ -1,17 +1,15 @@
-.container
+%header.container
 	.row
-		.twelvecol.last#title
-			=#image_tag 'rails.png'
-			%h1 TIDLAUS
-	.row.topmenu
-		.twelvecol.last
-			%nav
-				= link_to "Heim", root_path, active_page_class(root_path)
-				= link_to "Om", about_path, active_page_class(about_path)
-				= link_to "Magi", magi_path, active_page_class(magi_path)
-				= link_to "Chat", chat_path, active_page_class(chat_path)
-				= link_to "Longurl", new_link_path, active_controller_class('links') 	
-				- if logged_in
-					= link_to "Logout #{current_user.name.capitalize}", logout_path, :class => "logout"
-				- else
-					= link_to "Login", login_path, active_page_class(login_path)
+		%h1#title TIDLAUS
+		%nav
+			= link_to "Heim", root_path, active_page_class(root_path)
+			= link_to "Om", about_path, active_page_class(about_path)
+			= link_to "Magi", magi_path, active_page_class(magi_path)
+			= link_to "Chat", chat_path, active_page_class(chat_path)
+			= link_to "Longurl", new_link_path, active_controller_class('links')
+			- if logged_in
+				= link_to  current_user.name, current_user,active_page_class(current_user)
+				= link_to "Log out", logout_path
+			- else
+				= link_to "Log in", login_path, active_page_class(login_path)
+				= link_to "Join", new_user_path, active_page_class(new_user_path)

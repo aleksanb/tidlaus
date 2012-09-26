@@ -1,9 +1,10 @@
-%h1 All of links!
-
-%table
-	%th Kort adresse
-	%th Lang adresse
-	-@links.each do |link|
-		%tr
-			%td= link.shorturl
-			%td= link.longurl
+%article
+	%header
+		%h1 All of links!
+	%section
+		-@links.each do |link|
+			%p
+				=link_to link.shorturl, link
+	%section
+		%p
+			=link_to "Back", new_link_path

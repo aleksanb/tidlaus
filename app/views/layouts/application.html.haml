@@ -10,17 +10,23 @@
       =render 'layouts/header'
       - unless flash.empty?
         - javascript("hide_flash")
-        .container.flashcontainer
+        .container
           .row
-            .twelvecol.last
-              -flash.each do |key, value|
-                .flash{:class => key}
-                  =value
+            -flash.each do |key, value|
+              .flash{:class => key}
+                =value
       .container
         .row
-          .eightcol
-            =yield
-          .fourcol.last
-            =render 'layouts/sidebar'
-      = render 'layouts/footer'
+          -if content_for?(:sidebar)
+            .onecol
+            .sevencol
+              =yield
+            .fourcol.last
+              =yield :sidebar
+          -else
+            .onecol
+            .tencol
+              =yield
+            .onecol.last
+      =# render 'layouts/footer'
     = yield :tail

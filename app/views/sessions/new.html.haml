@@ -1,10 +1,9 @@
-%h1 Log in. 
-
-= semantic_form_for :session, :url => sessions_path do |f|
-	=f.input :name
-	=f.input :password
-	=f.action :submit, :label => "Log in"
-
-%p
-	Ikke medlem? Bli med 
-	=link_to 'her!', new_user_path
+%article
+	%header
+		%h1 Log in
+	%section
+		%p
+			= semantic_form_for :session, :url => sessions_path do |f|
+				=f.input :name
+				=f.input :password
+				=f.action :submit, :label => "Log in"

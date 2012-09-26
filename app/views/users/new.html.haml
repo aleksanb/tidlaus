@@ -1,9 +1,12 @@
-%h1 Ny bruker på tidlaus.
-
-= semantic_form_for @user do |f|
-	=f.input :name
-	=f.input :email
-	=f.input :password
-	=f.input :password_confirmation
-	=f.actions :submit
+%article
+	%header
+		%h1 New user
+	%section
+		%p
+			= semantic_form_for @user do |f|
+				=f.input :name
+				=f.input :email
+				=f.input :password
+				=f.input :password_confirmation, :label => "confirmation"
+				=f.actions :submit
 

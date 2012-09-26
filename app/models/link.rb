@@ -10,16 +10,17 @@
 #
 
 class Link < ActiveRecord::Base
-  attr_accessible :longurl, :shorturl, :length
+  attr_accessible :longurl, :shorturl, :length, :views
   attr_accessor :length
 
 
-  url_regex = /[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?$/i
+  url_regex = /[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,4}(\/\S*)?$/i
 
-  validates :shorturl, :presence => true, 
+  validate :shorturl, :presence => true, 
   						:format => {:with => url_regex}
-	validates :length, :presence => true
-  before_save :generatelink
+	validate :length, :presence => true, :on => :create
+
+  before_create :generatelink
 
 
   def generatelink

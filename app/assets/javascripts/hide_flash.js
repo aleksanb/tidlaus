@@ -1,1 +1,3 @@
-setTimeout(function() { $(".flashcontainer").slideToggle('slow')},3000)
+$(".flash").hide()
+$(".flash").slideToggle('slow')
+setTimeout(function() { $(".flash").slideToggle('slow')},4000)

@@ -2,7 +2,6 @@ class PagesController < ApplicationController
     
 	def index
 	    @title = "Index"
-      render :layout => "wide"
 	end
 
     def about

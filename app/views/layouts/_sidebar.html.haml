@@ -1,29 +1,25 @@
-- if logged_in
+/- if logged_in
+/	%section
+/		%h1= current_user.name.capitalize
+/		%p
+/			Email: 
+/			=current_user.email
+/		%p
+/			Du er logget inn som 
+/			= link_to "#{current_user.name.capitalize}.", user_path(current_user)
+/			Her er det foreløbig relativt sparst med tanke på hvor få ting som er i sidebaren. Håpentligvis kommer det nok features etter hvert slik at man vil begynne å benytte siden til vanlig i andre sammenhenger.
+/		%br
+/		%p 
+/			Om ikke så ser dette bra ut som en placeholder til sida faktisk får features. See jeg er kjempeflink til å utvikle nettsider :D Kom da alle konsulentselskap, alle kan få leie mine skills til å bygge sidebars!
+/		%p= link_to "Rediger bruker", root_path
+-fetch_recent_links(10)
+%aside
+	%article
+		%header
+			%h1 Recent longurls
 	%section
-		%h1= current_user.name.capitalize
+		-@recent_links.each do |l|
+			%p.grey
+				= link_to l.shorturl, link_path(l)
 		%p
-			Email: 
-			=current_user.email
-		%p
-			Du er logget inn som 
-			= link_to "#{current_user.name.capitalize}.", user_path(current_user)
-			Her er det foreløbig relativt sparst med tanke på hvor få ting som er i sidebaren. Håpentligvis kommer det nok features etter hvert slik at man vil begynne å benytte siden til vanlig i andre sammenhenger.
-		%br
-		%p 
-			Om ikke så ser dette bra ut som en placeholder til sida faktisk får features. See jeg er kjempeflink til å utvikle nettsider :D Kom da alle konsulentselskap, alle kan få leie mine skills til å bygge sidebars!
-		%p= link_to "Rediger bruker", root_path
-
-%section
-	-fetch_recent_links(10)
-
-	%h1 Recent longurls
-	%table
-		%tr
-			%th Url.
-			%th Longurl.
-		-@recent_links.each do |link|
-			%tr
-				%td=link.shorturl
-				%td=link_to 'view', link_path(link)
-
-	=link_to 'all of links', links_path
+			=link_to 'All links', links_path
