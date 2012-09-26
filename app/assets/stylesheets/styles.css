@@ -10,6 +10,7 @@
 
 * {
   word-wrap:break-word;
+  font-family:'BebasNeue', sans-serif;
 }
 
 @font-face {
@@ -19,13 +20,20 @@
   src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
 }
 
+@font-face {
+  src: url('/assets/BebasNeue.eot')
+  src: url('/assets/BebasNeue.eot') format('embedded-opentype');
+  http://www.fontsquirrel.com/fonts/bebas-neue
+  http://aokolish.me/blog/2011/12/24/at-font-face-with-the-asset-pipeline
+}
+
 section {
   margin-bottom:1em;
 }
 
 body {
-	font-size:14px;
-	font-family:'Lato', Arial, sans-serif;
+	/*font-size:14px;
+	font-family:'Lato', Arial, sans-serif;*/
 }
 
 
