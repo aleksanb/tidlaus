@@ -89,16 +89,13 @@ img {
 
 
 /* Smaller screens */
-
-@media only screen and (max-width: 1023px) {
+/*
+@media only screen and (max-width: 769px) {
 
 	body {
-	/*font-size: 0.8em;
-	line-height: 1.5em;*/
+	font-size: 0.8em;
+	line-height: 1.5em;
 	}
-	
-	}
-
 
 /* Mobile */
 
@@ -109,7 +106,7 @@ img {
 	-webkit-text-size-adjust: none;
 	}
 	
-	.row, body, .container {
+	.row, body {
 	width: 100%;
 	min-width: 0;
 	margin-left: 0px;
@@ -123,12 +120,21 @@ img {
 	float: none;
 	margin-left: 0px;
 	margin-right: 0px;
-	padding-left: 20px;
-	padding-right: 20px;
 	}
 
-	.hide {
-		display:none;
-	}
+    .hide {
+        display:none;
+    }
+    form {
+        width:100%;
+    }
+
+    form label {
+        width:30% !important;
+    }
+
+    form input, form select {
+        width:60% !important;
+    }
 
 }

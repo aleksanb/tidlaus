@@ -24,9 +24,9 @@
             .fourcol.last
               =yield :sidebar
           -else
-            .onecol
+            .onecol.hide
             .tencol
               =yield
-            .onecol.last
+            .onecol.last.hide
       =# render 'layouts/footer'
     = yield :tail
