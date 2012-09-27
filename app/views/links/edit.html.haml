@@ -1,0 +1,9 @@
+%article
+	%header
+		%h1 Edit link
+	%section
+		%p
+			= semantic_form_for @link do |f|
+				=f.input :shorturl, :label => "http://"
+				=f.input :length, :as => :select, :collection => [1,2,3]
+				=f.action :submit

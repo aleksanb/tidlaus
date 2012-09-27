@@ -6,6 +6,7 @@
 			= link_to "Om", about_path, active_page_class(about_path)
 			= link_to "Magi", magi_path, active_page_class(magi_path)
 			= link_to "Chat", chat_path, active_page_class(chat_path)
+			= link_to "Gallery", images_path, active_controller_class('images')
 			= link_to "Longurl", new_link_path, active_controller_class('links')
 			- if logged_in
 				= link_to  current_user.name, current_user,active_page_class(current_user)

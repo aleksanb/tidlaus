@@ -1,0 +1,7 @@
+%article
+	%header
+		%h1 Edit image
+		= image_tag @image.image.url, {:style => "width:60%"}
+	%section
+		%p
+			= render 'form' 

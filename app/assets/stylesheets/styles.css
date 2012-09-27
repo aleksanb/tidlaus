@@ -122,7 +122,7 @@ form li label {
   display:inline-block;
 }
 
-form li input, form li select {
+form li input, form li select, form li textarea {
   margin-top:5px;
   width:40%;
   display:inline-block;

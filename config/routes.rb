@@ -8,6 +8,7 @@ Tidlaus::Application.routes.draw do
   resources :users
   resources :pages
   resources :sessions
+  resources :images
 
   root :to => "pages#index" #"users#new" #"users#new"
   

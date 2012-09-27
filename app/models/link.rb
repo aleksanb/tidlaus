@@ -19,9 +19,9 @@ class Link < ActiveRecord::Base
   validate :shorturl, :presence => true, 
   						:format => {:with => url_regex}
 	validate :length, :presence => true, :on => :create
-
   before_create :generatelink
 
+  default_scope :order => "updated_at DESC"
 
   def generatelink
     self.shorturl = strip(self.shorturl)

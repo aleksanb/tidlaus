@@ -133,8 +133,8 @@ img {
         width:30% !important;
     }
 
-    form input, form select {
-        width:60% !important;
+    form input, form select, form textarea{
+        width:65% !important;
     }
 
 }

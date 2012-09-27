@@ -2,6 +2,10 @@ class PagesController < ApplicationController
     
 	def index
 	    @title = "Index"
+        @images = Image.limit(5)
+        @links = Link.limit(5)
+        @objects = @links+@images
+        @objects.sort! {|a,b| b.created_at <=> a.created_at}
 	end
 
     def about

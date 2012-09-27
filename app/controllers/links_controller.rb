@@ -3,8 +3,7 @@ class LinksController < ApplicationController
 
     def index 
         @title = "Lenkeforlengaren"
-		@links = Link.all
-
+		@links = Link.all(:order => "updated_at DESC")
 	end
 
 	def show
@@ -29,6 +28,28 @@ class LinksController < ApplicationController
 		end
 	end
 
+    # def edit
+    #     @link = Link.find(params[:id])
+    # end
+
+    # def update
+    #     @link = Link.find(params[:id])
+    #     if @link.update_attributes(params[:link])
+    #         flash[:success] = "<span class='black'>Success!</span> You updated a link!".html_safe
+    #         redirect_to @link
+    #     else
+    #         flash.now[:failure] = "<span class='black'>Invalid</span> link.".html_safe
+    #         render :edit
+    #     end
+    # end
+
+    def destroy
+        @link = Link.find(params[:id])
+        @link.destroy
+        flash[:success] = "<span class='black'>Success!</span> You deleted a link!".html_safe
+        redirect_to links_path
+    end
+
     def pycreate
         @link = Link.create(:shorturl => params[:shorturl], :length => params[:length])
         if @link.save
@@ -41,11 +62,7 @@ class LinksController < ApplicationController
 
     def redirect
         @link = Link.find_by_longurl(params[:id])
-        logger.debug "link har naa x views"
-        logger.debug @link.views
         @link.update_attributes!(:views => @link.views+1)
-        logger.debug "naa skal den ha +1, altsaa"
-        logger.debug @link.views
         redirect_to urlhelper(@link)
     end
 

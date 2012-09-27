@@ -1,3 +1,23 @@
+/ %p
+/ 	- @objects.each do |object|
+/ 		- if object.is_a?(Image)
+/ 			Object is a Image hwee
+/ 			%br
+/ 			and is created at 
+/ 			%br
+/ 			= object.created_at
+/ 			= render "images/image", object
+/ 		- elsif object.is_a?(Link)
+/ 			Onject is a Link wheee :D
+/ 			%br
+/ 			and is created at 
+/ 			%br
+/ 			= object.created_at
+/ 			= render "links/_link", object
+/ 		- else
+/ 			Random stuff happened :|
+/ 		%br
+
 %article
 	%header
 		%h1
