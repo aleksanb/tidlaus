@@ -9,11 +9,12 @@ gem 'sqlite3'
 
 #gem 'unicorn'
 gem 'haml'
-gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+gem 'annotate'
 gem 'unicorn'
 gem 'declarative_authorization'
 gem 'formtastic'
 gem 'paperclip'
+gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,6 +23,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'therubyracer'
   gem 'uglifier'
+  gem 'jquery-ui-rails'
 end
 
 group :development do

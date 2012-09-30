@@ -1,0 +1,28 @@
+%article
+	%header
+		%h1= "Users in #{@role.title}"
+	%section
+		- unless @role.users_roles.empty?
+			%p
+				- @role.users_roles.each do |users_role|
+					= users_role.user.name
+					= link_to "remove", [@role, users_role], :method => :delete, :confirm => "Sure?"
+					= link_to "show", users_role.user
+		- else
+			%p 
+				Ingen brukere, er ikke det trist ass?
+		%p
+			= link_to "delete role", @role, :confirm => "Sure?", :method => :delete
+
+	%header
+		%h1= "Add users to #{@role.title}"
+	%section
+		%p
+			= form_tag role_users_roles_path(@role), :method => :post do
+				= label_tag "user_autocomplete", "User"
+				= text_field_tag "user_id", nil, :id => "user_autocomplete"
+				= submit_tag 'Add User'
+		%p
+			= link_to "back", roles_path
+
+- javascript("autocomplete")

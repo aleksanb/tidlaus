@@ -5,10 +5,18 @@ Tidlaus::Application.routes.draw do
   match '/py/', :to => "links#pycreate"
 
   resources :links
-  resources :users
   resources :pages
   resources :sessions
   resources :images
+
+  resources :roles, :only => [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :users_roles, :only => [:create, :destroy]
+  end
+
+  match "users/search.:format" => "users#search",
+        :as => :users_search 
+        
+  resources :users
 
   root :to => "pages#index" #"users#new" #"users#new"
   

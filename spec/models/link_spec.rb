@@ -2,11 +2,12 @@
 #
 # Table name: links
 #
-#  id         :integer         not null, primary key
+#  id         :integer          not null, primary key
 #  shorturl   :string(255)
 #  longurl    :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  views      :integer          default(0)
 #
 
 require 'spec_helper'

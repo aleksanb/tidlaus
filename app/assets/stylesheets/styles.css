@@ -45,7 +45,7 @@ nav a {
   margin-right:5px;
   font-family: 'BebasNeueRegular', sans-serif;
 }
-nav a:nth-last-child(-n+2) {
+.login a {
   font-size:20pt;
 }
 
@@ -62,8 +62,6 @@ nav a:nth-last-child(-n+2) {
     color:#333;
     font-family:'BebasNeueRegular',sans-serif;
     font-size:20pt;
-    /*margin: 10px 0px;
-    padding: 10px 0px;*/
 }
 
 .black {
@@ -130,47 +128,6 @@ form li input, form li select, form li textarea {
 
 form li input {
 }
-
-/*
-.flash.failure {
-    border: 1px solid rgba(160, 48, 51, 0.5);
-    background-color: rgba(160, 48, 51, 0.2);;
-}
-
-.flash.success {
-    border: 1px solid rgba(34, 139, 34, 0.5);
-    background-color: rgba(34, 139, 34, 0.2);
-}*/
-/*
-.container {
-    margin-bottom:10px;
-}
-
-.flashcontainer {
-    margin-bottom:-10px;
-}
-
-.post {
-  margin-bottom:20px;
-}
-.post:first-child {
-  margin-top:20px;
-}
-*/
-
-/*
-form {
-}
-
-form label {
-    width:20%;
-    float:left;
-}
-
-form input {
-    width:50%;
-}
-
 
 /* ============================= */
 /* ! Layout for mobile version   */

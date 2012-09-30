@@ -2,12 +2,13 @@
 #
 # Table name: users
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  salt       :string
-#  encrypted_password :string
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  salt               :string(255)
+#  encrypted_password :string(255)
+#  email              :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -15,25 +16,30 @@ class User < ActiveRecord::Base
   attr_accessible :name, :password, :password_confirmation, :email
 
   #has_many :exercises, :dependent => :destroy
+  has_many :users_roles, :dependent => :destroy
+  has_many :roles, :through => :users_roles
 
   #username_regex = /\A[a-z0-9]*\z/i
 
   validates :name, :presence => true, :length => {:maximum => 50},
   					:uniqueness => {:case_sensitive => false}#,
   					#:format => {:with => username_regex}
-  validates :password, :presence => true, :confirmation => true, :length => {:within => 6..40}
-  validates :email, :presence => true
+  validate :password, :presence => true, :confirmation => true, :length => {:within => 6..40}, :on => :create
+  validate :email, :presence => true
 
   default_scope :order => "updated_at DESC"
+
+  before_create do |user|
+    encrypt_password
+  end
 
   before_save do |user|
     user.name.downcase!
     user.email.downcase!
-    encrypt_password
   end
 
-  def to_param
-  	name
+  def role_symbols
+    (roles || []).map { |r| r.title.to_sym}   
   end
 
   def has_password?(user_password)

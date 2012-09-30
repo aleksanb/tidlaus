@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926222922) do
+ActiveRecord::Schema.define(:version => 20120928152929) do
 
   create_table "images", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(:version => 20120926222922) do
     t.integer  "views",      :default => 0
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",         :null => false
@@ -39,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20120926222922) do
     t.string   "salt"
     t.string   "encrypted_password"
     t.string   "email"
+  end
+
+  create_table "users_roles", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

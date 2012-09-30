@@ -5,7 +5,7 @@ module ApplicationHelper
 	    return {}
 	end
 
-	def active_controller_class(con, css_class = 'active')
+	def active_controller_class(con, css_class= 'active')
 		return :class => css_class if params[:controller] == con
 		return {}
 	end
@@ -14,8 +14,8 @@ module ApplicationHelper
 		@recent_links = Link.order("created_at DESC").limit(howmany)
 	end
 
-  def javascript(*args)
-    content_for(:tail) { javascript_include_tag(*args) }
-  end
+	def javascript(*args)
+		content_for(:tail) { javascript_include_tag(*args) }
+	end
 
 end

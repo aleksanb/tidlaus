@@ -1,0 +1,11 @@
+%article
+	%header
+		%h1 Roles
+	%section
+		- unless @roles.empty?
+			- @roles.each do |role|
+				%p
+					= role.title
+					= link_to "show", role
+					= link_to "delete role", role, :method => :delete, :confirm => "Sure?"
+		%p= link_to "new", new_role_path

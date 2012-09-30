@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find_by_name(params[:id])
+		@user = User.find(params[:id])
 	end
 
 	def new
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:success] = "Welcome, #{@user.name}.".html_safe
             session[:user_id] = @user.id
-			redirect_to root_path
+			redirect_to @user
 		else
 			flash.now[:failure] = "<span class='black'>Invalid</span> user data.".html_safe
 			render 'new'
@@ -26,12 +26,27 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		@user = User.find(params[:id])
 	end
 
 	def update
+		@user = User.find(params[:id])
+		logger.debug @user.inspect
+		logger.debug "heee assaa"
+		if @user.update_attributes(params[:user])
+			flash[:success] = "Updated shit!"
+			redirect_to @user
+		else
+			flash[:failure] = "Didn't update shit!"
+			render :edit
+		end
 	end
 
 	def destroy
+	end
+
+	def search
+		@users = User.all
 	end
 
 end
