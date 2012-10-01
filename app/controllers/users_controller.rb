@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 		logger.debug @user.inspect
 		logger.debug "heee assaa"
 		if @user.update_attributes(params[:user])
+			UserMailer.password_reset(@user).deliver
 			flash[:success] = "Updated shit!"
 			redirect_to @user
 		else
