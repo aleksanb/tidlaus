@@ -7,6 +7,7 @@ authorization do
     has_permission_on :pages, :to => :read_static_pages
     has_permission_on :images, :to => :read
     has_permission_on :sessions, :to => :manage
+    has_permission_on :links, :to => :redirect
 
     #creation permissions
     has_permission_on :links, :to => :create
@@ -35,6 +36,7 @@ authorization do
       :authorization_rules, 
       :authorization_usages ], :to => :manage
     has_permission_on :pages, :to => :read_static_pages
+    has_permission_on :links, :to => :redirect
   end
 
 end
@@ -46,6 +48,9 @@ privileges do
   privilege :create, :includes => :new
   privilege :update, :includes => :edit
   privilege :delete, :includes => :destroy
+
+  # allow redirecting
+  privilege :redirect, :includes => [:pycreate, :redirect]
 
   #static pages
   privilege :read_static_pages, :includes => [:index,:about, :magi, :chat, :kaizervirus]

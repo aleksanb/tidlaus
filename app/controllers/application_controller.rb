@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
 	before_filter :set_current_user_for_model_layer_access_control
-	helper :all
 
 	def current_user
 		begin
@@ -22,6 +21,10 @@ class ApplicationController < ActionController::Base
 		#redirect_to :back
 	#rescue ActionController::RedirectBackError
 		redirect_to login_path
+	end
+
+	def urlhelper(link)
+		"http://#{link.shorturl}"
 	end
 
 	protected
