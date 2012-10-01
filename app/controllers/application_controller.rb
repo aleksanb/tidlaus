@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
 	before_filter :set_current_user_for_model_layer_access_control
+	helper :all
 
 	def current_user
 		begin

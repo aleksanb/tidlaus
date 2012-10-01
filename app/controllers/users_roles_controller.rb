@@ -1,4 +1,5 @@
 class UsersRolesController < ApplicationController
+	#filter access here also
 	before_filter :before_create, :only => :create
 
 	def destroy

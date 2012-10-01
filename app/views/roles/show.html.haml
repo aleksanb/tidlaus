@@ -3,8 +3,8 @@
 		%h1= "Users in #{@role.title}"
 	%section
 		- unless @role.users_roles.empty?
-			%p
-				- @role.users_roles.each do |users_role|
+			- @role.users_roles.each do |users_role|
+				%p
 					= users_role.user.name
 					= link_to "remove", [@role, users_role], :method => :delete, :confirm => "Sure?"
 					= link_to "show", users_role.user

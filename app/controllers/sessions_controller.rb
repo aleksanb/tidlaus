@@ -18,8 +18,6 @@ class SessionsController < ApplicationController
   def destroy
   	session[:user_id] = nil
   	flash[:success] = "Logged <span class='black'>out.</span>".html_safe
-    redirect_to :back
-  rescue ActionController::RedirectBackError
     redirect_to root_path
   end
 end

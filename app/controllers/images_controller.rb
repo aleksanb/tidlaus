@@ -1,4 +1,7 @@
 class ImagesController < ApplicationController
+	#filter_access_to :all
+	filter_access_to [:create, :edit, :update, :destroy], :attribute_check => :true
+
 	def index
 		@images = Image.all(:order => "created_at DESC")
 	end

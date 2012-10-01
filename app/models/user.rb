@@ -12,7 +12,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessor :password
+  attr_accessor :password, :password_confirmation
   attr_accessible :name, :password, :password_confirmation, :email
 
   #has_many :exercises, :dependent => :destroy
@@ -22,10 +22,11 @@ class User < ActiveRecord::Base
   #username_regex = /\A[a-z0-9]*\z/i
 
   validates :name, :presence => true, :length => {:maximum => 50},
-  					:uniqueness => {:case_sensitive => false}#,
-  					#:format => {:with => username_regex}
-  validate :password, :presence => true, :confirmation => true, :length => {:within => 6..40}, :on => :create
-  validate :email, :presence => true
+            :uniqueness => {:case_sensitive => false}
+            #:format => {:with => username_regex}
+  validates :password, :presence => true, :confirmation => true, :length => {:within => 6..40}, :on => :create
+  
+  validates :email, :presence => true
 
   default_scope :order => "updated_at DESC"
 

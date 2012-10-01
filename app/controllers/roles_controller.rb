@@ -1,13 +1,11 @@
 class RolesController < ApplicationController
-	before_filter :find_by_id, :only => [:show, :edit, :update]
-	#filter_access_to :all
+	filter_access_to :all, :attribute_check => true
 
 	def index
 		@roles = Role.all
 	end
 
 	def new
-		@role = Role.new
 	end
 
 	def create
@@ -25,20 +23,9 @@ class RolesController < ApplicationController
 	end
 
 	def destroy
-		@role = Role.find(params[:id])
 		@role.destroy
 		flash[:success] = "Role Destroyed."
 		redirect_to roles_path
 	end
 
-	protected
-
-	def find_by_id
-		@role = Role.find(params[:id])
-
-		if @role.nil?
-			raise ActiveRecord::RecordNotFound
-		end
-
-	end
 end

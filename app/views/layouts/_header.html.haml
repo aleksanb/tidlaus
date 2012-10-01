@@ -10,7 +10,7 @@
 			= link_to "Longurl", new_link_path, active_controller_class('links')
 			%span.login
 				- if logged_in
-					- if permitted_to? :manage, :roles
+					- if current_user.role_symbols.include?(:admin)
 						= link_to "admin", roles_path, active_page_class(roles_path)
 					= link_to  current_user.name, current_user,active_page_class(current_user)
 					= link_to "Log out", logout_path
