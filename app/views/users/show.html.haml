@@ -2,6 +2,8 @@
 	%header
 		%h1= @user.name.capitalize
 	%section
+		- if session[:user_id].to_i == params[:id].to_i
+			%p= @user.email
 		%p lorem ipsum dolor sit amet Osv Osv slick as hell.
 		- if permitted_to? :edit, :users
 			%p
