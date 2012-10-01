@@ -1,11 +1,12 @@
 class RolesController < ApplicationController
-	filter_access_to :all, :attribute_check => true
+	filter_access_to :all
 
 	def index
 		@roles = Role.all
 	end
 
 	def new
+		@role = Role.new
 	end
 
 	def create
@@ -20,9 +21,11 @@ class RolesController < ApplicationController
 	end
 
 	def show
+		@role = Role.find(params[:id])
 	end
 
 	def destroy
+		@role = Role.find(params[:id])
 		@role.destroy
 		flash[:success] = "Role Destroyed."
 		redirect_to roles_path

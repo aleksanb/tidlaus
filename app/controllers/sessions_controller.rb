@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  filter_access_to :all
+
   def new
   	@title = "Sign in"
   end

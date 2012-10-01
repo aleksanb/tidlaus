@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
 
 	def permission_denied 
 		flash[:failure] = "This action is protected."
+		#redirect_to :back
+	#rescue ActionController::RedirectBackError
 		redirect_to login_path
 	end
 

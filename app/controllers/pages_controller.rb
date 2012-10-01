@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-    #filter_access_to :all, :attribute_check => true
+    filter_access_to :all
     
 	def index
 	    @title = "Index"

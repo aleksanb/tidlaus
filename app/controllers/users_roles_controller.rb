@@ -1,6 +1,7 @@
 class UsersRolesController < ApplicationController
 	#filter access here also
 	before_filter :before_create, :only => :create
+	filter_access_to :all
 
 	def destroy
 		@users_role = UsersRole.find(params[:id])

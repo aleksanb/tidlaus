@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def role_symbols
-    (roles || []).map { |r| r.title.to_sym}   
+    (roles || []).map { |r| r.title.to_sym} + [:user]
   end
 
   def has_password?(user_password)

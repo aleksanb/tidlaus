@@ -14,7 +14,9 @@
 		%section
 			%p= "Generated #{@link.created_at.strftime("%d. %B %Y")}"
 			%p= "Visited #{@link.views} times."
+		- if permitted_to? :manage, :links
+			%p
+				/= link_to "Edit", edit_link_path(@link)
+				= link_to "Delete", @link, :confirm => "Are you sure?", :method => :delete
 		%p
-			/= link_to "Edit", edit_link_path(@link)
-			= link_to "Delete", @link, :confirm => "Are you sure?", :method => :delete
 			= link_to "Back", links_path

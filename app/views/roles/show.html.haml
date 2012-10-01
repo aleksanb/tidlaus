@@ -1,19 +1,21 @@
 %article
 	%header
+		%h1= @role.title
+	%section
+		%p
+			= link_to "delete role", @role, :confirm => "Sure?", :method => :delete
+	%header
 		%h1= "Users in #{@role.title}"
 	%section
 		- unless @role.users_roles.empty?
 			- @role.users_roles.each do |users_role|
 				%p
 					= users_role.user.name
-					= link_to "remove", [@role, users_role], :method => :delete, :confirm => "Sure?"
 					= link_to "show", users_role.user
+					= link_to "remove", [@role, users_role], :method => :delete, :confirm => "Sure?"
 		- else
 			%p 
 				Ingen brukere, er ikke det trist ass?
-		%p
-			= link_to "delete role", @role, :confirm => "Sure?", :method => :delete
-
 	%header
 		%h1= "Add users to #{@role.title}"
 	%section

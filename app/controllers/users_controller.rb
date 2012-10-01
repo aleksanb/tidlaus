@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-	#filter_access_to :all
+	filter_access_to :all
+	filter_access_to [:destroy, :edit, :update], :attribute_check => true
 
 	def index
 		@users = User.all
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 		if @user.save
 			flash[:success] = "Welcome, #{@user.name}.".html_safe
-            session[:user_id] = @user.id
+			session[:user_id] = @user.id
 			redirect_to @user
 		else
 			flash.now[:failure] = "<span class='black'>Invalid</span> user data.".html_safe
@@ -44,6 +45,10 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+		@user = User.find(params[:id])
+		@user.destroy
+		flash[:success] = "<span class='black'>Success!</span> You destroyed a user!".html_safe
+		redirect_to users_path
 	end
 
 	def search

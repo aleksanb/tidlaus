@@ -17,8 +17,8 @@ class UsersRole < ActiveRecord::Base
 	validates_presence_of :user_id
 	validates_presence_of :role_id
 
-	validates_associated :user
- 	validates_associated :role
+	#validates_associated :user
+ 	#validates_associated :role
 
 	belongs_to :user
 	belongs_to :role

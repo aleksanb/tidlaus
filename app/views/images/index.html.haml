@@ -1,6 +1,6 @@
 =render @images
-
-%article
-  %section
-    %p
-      = link_to "Add image", new_image_path
+-if permitted_to? :create, :images
+	%article
+		%section
+			%p
+				= link_to "Add image", new_image_path

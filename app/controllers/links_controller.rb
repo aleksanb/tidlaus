@@ -1,5 +1,6 @@
 class LinksController < ApplicationController 
     #layout 'blank', :only => [:show]
+    filter_access_to :all
 
     def index 
         @title = "Lenkeforlengaren"
