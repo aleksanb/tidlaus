@@ -4,7 +4,7 @@ class LinksController < ApplicationController
 
     def index 
         @title = "Lenkeforlengaren"
-		@links = Link.all(:order => "updated_at DESC")
+		@links = Link.all
 	end
 
 	def show

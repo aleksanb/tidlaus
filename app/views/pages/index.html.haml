@@ -1,54 +1,21 @@
-/ %p
-/ 	- @objects.each do |object|
-/ 		- if object.is_a?(Image)
-/ 			Object is a Image hwee
-/ 			%br
-/ 			and is created at 
-/ 			%br
-/ 			= object.created_at
-/ 			= render "images/image", object
-/ 		- elsif object.is_a?(Link)
-/ 			Onject is a Link wheee :D
-/ 			%br
-/ 			and is created at 
-/ 			%br
-/ 			= object.created_at
-/ 			= render "links/_link", object
-/ 		- else
-/ 			Random stuff happened :|
-/ 		%br
+- @objects.each do |object|
+	- if object.is_a?(Image)
+		= render :partial => 'images/only_image', :locals => {:image => object}
+	- elsif object.is_a?(Article)
+		= render object
 
 %article
-	%header
-		%h1
-			Lorem ipzum?
-		%time{:datetime => DateTime.now.strftime("%Y-%m-%d")}= DateTime.now.strftime("%d. %B %Y")
 	%section
-		%p 
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		- if permitted_to? :create, :articles
+			%p 
+				= link_to "Add article", new_article_path
 		%p
-			Berphurrdurr Hehe hurrdidurr urrlurrdisnurr.
-		%p
-			Blabla derphurrdurr. 
-%article
-	%header
-		%h1
-			Lorem ipzum!
-		%time{:datetime => DateTime.now.strftime("%Y-%m-%d")}= DateTime.now.strftime("%d. %B %Y")
-	%section
-		%p
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		%p
-			Berphurrdurr Hehe hurrdidurr urrlurrdisnurr.
-		%p
-			Blurrblurr durr herphurr. 
+			= link_to 'All articles', articles_path
+
+/- @objects.each do |object|
+/	- if object.is_a?(Image)
+/		= render object
+/	- if object.is_a?(Article)
+/		= render object
+/	- if object.is_a?(Link)
+/		= render object

@@ -3,15 +3,13 @@ class PagesController < ApplicationController
     
 	def index
 	    @title = "Index"
-        @images = Image.limit(5)
-        @links = Link.limit(5)
-        @objects = @links+@images
+        images = Image.limit(5)
+        #links = Link.limit(5)
+        articles = Article.limit(5)
+
+        @objects = images+articles
         @objects.sort! {|a,b| b.created_at <=> a.created_at}
 	end
-
-    def about
-        @title = "About"
-    end
 
     def magi
         @title = "Magi"

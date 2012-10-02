@@ -22,7 +22,7 @@ class Link < ActiveRecord::Base
 	validate :length, :presence => true, :on => :create
   before_create :generatelink
 
-  default_scope :order => "updated_at DESC"
+  default_scope :order => "created_at DESC"
 
   def generatelink
     self.shorturl = strip(self.shorturl)

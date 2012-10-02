@@ -1,4 +1,6 @@
-=render @images
+- @images.each do |image|
+	= render :partial => 'only_image', :locals => {:image => image}
+
 -if permitted_to? :create, :images
 	%article
 		%section

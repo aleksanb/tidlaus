@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 	filter_access_to :all
 
 	def index
-		@images = Image.all(:order => "created_at DESC")
+		@images = Image.all
 	end
 
 	def show

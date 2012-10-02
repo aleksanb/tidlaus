@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :users_roles, :dependent => :destroy
   has_many :roles, :through => :users_roles
   has_many :images
+  has_many :articles
 
   #username_regex = /\A[a-z0-9]*\z/i
 
@@ -28,7 +29,7 @@ class User < ActiveRecord::Base
   
   validates :email, :presence => true
 
-  default_scope :order => "updated_at DESC"
+  default_scope :order => "created_at DESC"
 
   before_create do |user|
     encrypt_password

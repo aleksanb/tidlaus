@@ -8,6 +8,7 @@ Tidlaus::Application.routes.draw do
   resources :pages
   resources :sessions
   resources :images
+  resources :articles
 
   resources :roles, :only => [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :users_roles, :only => [:create, :destroy]
@@ -24,7 +25,6 @@ Tidlaus::Application.routes.draw do
   match "/logout", :to => "sessions#destroy", :as => "logout"
 
   match "/kaizervirus", :to => "pages#kaizervirus"
-  match "/about", :to => "pages#about"
   match "/magi", :to => "pages#magi"
   match "/chat", :to => "pages#chat"
   match "/python/", :to => "pages#python"

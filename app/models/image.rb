@@ -24,7 +24,8 @@ class Image < ActiveRecord::Base
 
 	validate :title, :presence => true
 	validate :image, :presence => true
+	validate :user_id, :presence => true
 
-	default_scope :order => "updated_at DESC"
+	default_scope :order => "created_at DESC"
   # attr_accessible :title, :body
 end

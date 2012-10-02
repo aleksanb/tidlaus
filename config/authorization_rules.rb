@@ -5,6 +5,7 @@ authorization do
     has_permission_on :links, :to => :read
     has_permission_on :users, :to => :read
     has_permission_on :pages, :to => :read_static_pages
+    has_permission_on :articles, :to => :read
     has_permission_on :images, :to => :read
     has_permission_on :sessions, :to => :manage
     has_permission_on :links, :to => :redirect
@@ -28,6 +29,7 @@ authorization do
       includes :user
 
       has_permission_on :images, :to => :create
+      has_permission_on :articles, :to => :create
 
   end
 
@@ -38,6 +40,7 @@ authorization do
       :links,
       :users, 
       :images,
+      :articles,
       :sessions,
       :roles, 
       :users_roles,
