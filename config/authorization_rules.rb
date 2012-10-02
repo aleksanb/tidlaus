@@ -23,6 +23,14 @@ authorization do
 
   end
 
+  role :contributor do
+      includes :guest
+      includes :user
+
+      has_permission_on :images, :to => :create
+
+  end
+
   role :admin do
     includes :user
 
