@@ -16,6 +16,9 @@
 
 
 #ignore other unneeded files
+unicorn.pid
+/unicorn.pid
+
 doc/
 *.swp
 *~
