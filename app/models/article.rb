@@ -20,5 +20,5 @@ class Article < ActiveRecord::Base
 	validates :user_id, :presence => true
 
 	default_scope :order => "created_at DESC"
-  # attr_accessible :title, :body
+
 end

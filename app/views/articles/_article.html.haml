@@ -8,8 +8,7 @@
 		%span.grey.right
 			= link_to article.user.name, article.user
 	%section
-		%p
-			= article.content
+		= markdown(article.content)
 		- if permitted_to? :manage, :articles
 			%p
 				= link_to "Edit", edit_article_path(article)
