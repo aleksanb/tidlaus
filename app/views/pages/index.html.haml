@@ -9,6 +9,9 @@
 		- if permitted_to? :create, :articles
 			%p 
 				= link_to "Add article", new_article_path
+		- if permitted_to? :create, :images
+			%p
+				= link_to "Add image", new_image_path
 		%p
 			= link_to 'All articles', articles_path
 
