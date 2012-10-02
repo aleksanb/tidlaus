@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
             #:format => {:with => username_regex}
   validates :password, :presence => true, :confirmation => true, :length => {:within => 6..40}, :on => :create
   
-  validates :email, :presence => true
+  #validates :email, :presence => true
 
   default_scope :order => "created_at DESC"
 
