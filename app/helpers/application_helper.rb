@@ -18,4 +18,9 @@ module ApplicationHelper
 		content_for(:tail) { javascript_include_tag(*args) }
 	end
 
+	def markdown(content)
+	  	markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+	  	markdown.render(content).html_safe
+	end
+
 end
