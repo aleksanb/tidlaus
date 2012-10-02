@@ -15,9 +15,9 @@ class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
   attr_accessible :name, :password, :password_confirmation, :email
 
-  #has_many :exercises, :dependent => :destroy
   has_many :users_roles, :dependent => :destroy
   has_many :roles, :through => :users_roles
+  has_many :images
 
   #username_regex = /\A[a-z0-9]*\z/i
 

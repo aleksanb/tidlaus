@@ -15,7 +15,9 @@ class ImagesController < ApplicationController
 	end
 
 	def create
-		@image = Image.create(params[:image])
+		@user = current_user
+		@image = @user.images.create(params[:image])
+		#@image = Image.create(params[:image])
 		if @image.save
 			flash[:success] = "<span class='black'>Success!</span> You submitted an image!".html_safe
             redirect_to @image
@@ -44,6 +46,6 @@ class ImagesController < ApplicationController
 		@image = Image.find(params[:id])
 		@image.destroy
 		flash[:success] = "<span class='black'>Success!</span> You deleted an image!".html_safe
-		redirect_to image_path
+		redirect_to images_path
 	end
 end

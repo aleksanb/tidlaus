@@ -11,10 +11,13 @@
 #  description        :text
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  user_id            :integer
 #
 
 class Image < ActiveRecord::Base
 	attr_accessible :image, :title, :description
+
+	belongs_to :user
 
 	has_attached_file 	:image,
 						:styles => {:medium => "300x300>", :thumb => "100x100>"}

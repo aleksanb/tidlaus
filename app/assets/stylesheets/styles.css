@@ -30,6 +30,7 @@
 .bebasneue {font-family:'BebasNeueRegular', sans-serif}
 .lato {font-family:'Lato', Arial, sans-serif}
 .active {color:black;}
+.right {float:right;}
 
 a {
   text-decoration:none;
