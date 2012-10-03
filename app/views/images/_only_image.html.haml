@@ -1,5 +1,10 @@
 %article
 	%header
-		%span.grey.right= image.user.name
+		.grey.right=# link_to image.user.name, image.user
 	%section
 		= link_to (image_tag image.image.url), image
+		%p
+			- if permitted_to? :edit, :images
+				= link_to "Edit", edit_image_path(image)
+			- if permitted_to? :delete, :images
+				= link_to "Delete", image, :confirm => "Are you sure?", :method => :delete

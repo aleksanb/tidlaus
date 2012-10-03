@@ -2,7 +2,8 @@
 	- if object.is_a?(Image)
 		= render :partial => 'images/only_image', :locals => {:image => object}
 	- elsif object.is_a?(Article)
-		= render object
+		= render :partial => 'articles/only_article', :locals => {:article => object}
+		=# render object
 
 %article
 	%section

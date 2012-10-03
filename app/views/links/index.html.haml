@@ -5,7 +5,8 @@
 		-@links.each do |link|
 			%p
 				=link_to link.shorturl, link
-				=link_to "Delete", link, :confirm => "Are you sure?", :method => :delete, :style => "float:right;"
+				-if permitted_to? :delete, :links
+					=link_to "Delete", link, :confirm => "Are you sure?", :method => :delete, :style => "float:right;"
 	%section
 		%p
 			=link_to "back", new_link_path

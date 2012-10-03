@@ -1,0 +1,10 @@
+%article
+	%header
+		.grey.right=# link_to article.user.name, article.user
+	%section
+		= link_to markdown(article.content), article
+		%p
+			- if permitted_to? :edit, :articles
+				= link_to "Edit", edit_article_path(article)
+			- if permitted_to? :delete, :articles
+				= link_to "Delete", article, :confirm => "Are you sure?", :method => :delete
