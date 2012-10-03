@@ -5,11 +5,10 @@
 		- if session[:user_id].to_i == params[:id].to_i
 			%p= @user.email
 		%p lorem ipsum dolor sit amet Osv Osv slick as hell.
-		- if permitted_to? :edit, :users
-			%p
+		%p
+			- if permitted_to? :edit, :users
 				= link_to 'edit', edit_user_path(@user)
-		- if permitted_to? :destroy, :users
-			%p
+			- if permitted_to? :destroy, :users
 				= link_to 'destroy', @user, :confirm => "Are you sure?", :method => :delete
 		%p
 			= link_to 'all users', users_path
