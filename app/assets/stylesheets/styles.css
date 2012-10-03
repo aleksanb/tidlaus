@@ -32,9 +32,17 @@
 .active {color:black;}
 .right {float:right;}
 
+blockquote {
+    margin-left:1em;
+}
+
 a {
   text-decoration:none;
-  color:#333;
+  #color:#333;
+  #color:darkRed;
+  color:darkBlue;
+  #color:darkGreen;
+  font-family:'BebasNeueRegular',sans-serif;
 }
 
 a:hover {
@@ -60,7 +68,10 @@ nav a {
 }
 
 .flash {
-    color:#333;
+    #color:#333;
+    #color:darkRed;
+    color:darkBlue;
+    #color:darkGreen;
     font-family:'BebasNeueRegular',sans-serif;
     font-size:20pt;
 }
@@ -140,10 +151,6 @@ form li input {
 
 @media handheld, only screen and (max-width: 767px) {
 
-	body {
-		
-	}
-
 }
 
 
@@ -153,10 +160,5 @@ form li input {
 /* ========================================== */
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) { 
-
-/*	.logo {
-		background: url(logo2x.jpg) no-repeat;
-		background-size: 212px 303px;
-	}*/
 
 }

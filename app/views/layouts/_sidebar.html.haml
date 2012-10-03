@@ -17,9 +17,9 @@
 	%article
 		%header
 			%h1 Recent longurls
-	%section
-		-@recent_links.each do |l|
-			%p.grey
-				= link_to l.shorturl, link_path(l)
-		%p
-			=link_to 'All links', links_path
+		%section
+			-@recent_links.each do |l|
+				%p.grey
+					= link_to l.shorturl, link_path(l)
+			%p
+				=link_to 'All links', links_path
