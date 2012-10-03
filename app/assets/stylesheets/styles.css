@@ -79,6 +79,10 @@ nav a {
   margin-bottom:1em;
 }
 
+article {
+    margin-bottom:2em;
+}
+
 article h1 {
   font-family:'BebasNeueRegular',sans-serif;
   font-size:20pt;
