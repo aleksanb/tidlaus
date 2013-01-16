@@ -38,9 +38,9 @@ blockquote {
 
 a {
   text-decoration:none;
-  #color:#333;
+  color:#333;
   #color:darkRed;
-  color:darkBlue;
+  #color:darkBlue;
   #color:darkGreen;
   font-family:'BebasNeueRegular',sans-serif;
 }
@@ -68,9 +68,9 @@ nav a {
 }
 
 .flash {
-    #color:#333;
+    color:#333;
     #color:darkRed;
-    color:darkBlue;
+    #color:darkBlue;
     #color:darkGreen;
     font-family:'BebasNeueRegular',sans-serif;
     font-size:20pt;
@@ -142,7 +142,17 @@ form li input, form li select, form li textarea {
   display:inline-block;
 }
 
-form li input {
+.ui-autocomplete {
+    list-style-type:none;
+    max-width:200px;
+    overflow:auto;
+    max-height:150px;
+    background-color:white;
+}
+
+dl dd {
+    font-family:'Lato', Arial, sans-serif;
+    margin-left:1em;
 }
 
 /* ============================= */

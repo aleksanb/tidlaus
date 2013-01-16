@@ -1,4 +1,4 @@
- $("input#user_autocomplete").autocomplete({
+$("input#user_autocomplete").autocomplete({
     source: "/users/search.json",
-    minChars: 3
-  });
+    minChars: 2
+});

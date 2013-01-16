@@ -1,8 +1,7 @@
-- @images.each do |image|
-	= render :partial => 'only_image', :locals => {:image => image}
-
 -if permitted_to? :create, :images
 	%article
 		%section
 			%p
 				= link_to "Add image", new_image_path
+- @images.each do |image|
+	= render :partial => 'only_image', :locals => {:image => image}

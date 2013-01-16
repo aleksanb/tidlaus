@@ -3,8 +3,9 @@
 		%h1#title TIDLAUS
 		%nav
 			= link_to "Heim", root_path, active_page_class(root_path)
-			= link_to "Magi", magi_path, active_page_class(magi_path)
+			= link_to "Demos", demos_path, active_page_class(demos_path)
 			= link_to "Chat", chat_path, active_page_class(chat_path)
+			= link_to "Articles", articles_path, active_controller_class('articles')
 			= link_to "Gallery", images_path, active_controller_class('images')
 			= link_to "Longurl", new_link_path, active_controller_class('links')
 			%span.login

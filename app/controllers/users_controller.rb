@@ -47,13 +47,18 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user = User.find(params[:id])
-		@user.destroy
-		flash[:success] = "<span class='black'>Success!</span> You destroyed a user!".html_safe
-		redirect_to users_path
+        unless @user.role_symbols.include?(:admin)
+            @user.destroy
+            flash[:success] = "<span class='black'>Success!</span> You destroyed a user!".html_safe
+            redirect_to users_path
+        else
+            flash[:failure] = "No deleting admins!"
+            redirect_to root_path
+        end
 	end
 
 	def search
-		@users = User.all
+        @users = User.where("name LIKE ?","%#{params[:term]}%")
 	end
 
 end

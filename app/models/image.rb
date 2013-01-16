@@ -25,6 +25,7 @@ class Image < ActiveRecord::Base
 	validate :title, :presence => true
 	validate :image, :presence => true
 	validate :user_id, :presence => true
+    validates_format_of :image, :with => /\.(jpg|gif|bmp|png)\Z/
 
 	default_scope :order => "created_at DESC"
   # attr_accessible :title, :body

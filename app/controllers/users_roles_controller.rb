@@ -1,13 +1,17 @@
 class UsersRolesController < ApplicationController
-	#filter access here also
-	before_filter :before_create, :only => :create
 	filter_access_to :all
+	before_filter :before_create, :only => :create
 
 	def destroy
 		@users_role = UsersRole.find(params[:id])
-		@users_role.destroy
-		flash[:success] = "User removed."
-		redirect_to roles_path(@users_role.role)
+        unless @users_role.role_id == 1
+            @users_role.destroy
+            flash[:success] = "User removed."
+            redirect_to roles_path(@users_role.role)
+        else
+            flash[:failure] = "No deleting admins!"
+            redirect_to root_path
+        end
 	end
 
 	def create
@@ -29,11 +33,15 @@ class UsersRolesController < ApplicationController
 	end
 
 	private
-
-	def before_create
-		@users_role = UsersRole.new(
-			:user_id => params[:user_id].to_i,
-			:role_id => params[:role_id].to_i
-		)
-	end
+        def before_create
+            unless params[:role_id].to_i == 1
+                @users_role = UsersRole.new(
+                    :user_id => params[:user_id].to_i,
+                    :role_id => params[:role_id].to_i
+                )
+            else
+                flash[:failure] = "No more admins!"
+                redirect_to root_path
+            end
+        end
 end

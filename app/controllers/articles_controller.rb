@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-
 	filter_access_to :all
 
 	def index
@@ -45,7 +44,5 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 		@article.destroy
 		flash[:success] = "<span class='black'>Success!</span> You deleted an article!".html_safe
-		redirect_to root_path
 	end
-
 end

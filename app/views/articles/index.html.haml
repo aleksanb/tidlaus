@@ -1,6 +1,6 @@
-=render @articles
 -if permitted_to? :create, :articles
 	%article
 		%section
 			%p
 				= link_to "Add article", new_article_path
+=render @articles

@@ -1,25 +1,18 @@
-- @objects.each do |object|
-	- if object.is_a?(Image)
-		= render :partial => 'images/only_image', :locals => {:image => object}
-	- elsif object.is_a?(Article)
-		= render :partial => 'articles/only_article', :locals => {:article => object}
-		=# render object
-
 %article
-	%section
-		- if permitted_to? :create, :articles
-			%p 
-				= link_to "Add article", new_article_path
-		- if permitted_to? :create, :images
-			%p
-				= link_to "Add image", new_image_path
-		%p
-			= link_to 'All articles', articles_path
+  %section
+    - if permitted_to? :create, :articles
+      %p 
+        = link_to "Add article", new_article_path
+        - if permitted_to? :create, :images
+          %p
+            = link_to "Add image", new_image_path
 
-/- @objects.each do |object|
-/	- if object.is_a?(Image)
-/		= render object
-/	- if object.is_a?(Article)
-/		= render object
-/	- if object.is_a?(Link)
-/		= render object
+- @objects.each do |object|
+  - if object.is_a?(Image)
+    = render :partial => 'images/only_image', :locals => {:image => object}
+  - elsif object.is_a?(Article)
+    = render :partial => 'articles/only_article', :locals => {:article => object}
+
+%p
+  = link_to 'All articles', articles_path
+  = link_to "All images", images_path

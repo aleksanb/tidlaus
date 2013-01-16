@@ -19,14 +19,13 @@
         .row
           -if content_for?(:sidebar)
             .onecol
-            .sevencol
+            .sevencol#maincontainer
               =yield
             .fourcol.last
               =yield :sidebar
           -else
             .onecol.hide
-            .tencol
+            .tencol#maincontainer
               =yield
             .onecol.last.hide
-      =# render 'layouts/footer'
     = yield :tail

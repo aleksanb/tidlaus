@@ -1,1 +1,1 @@
-!= @users.collect { |user| {:value => user.id, :label => "#{user.name} (#{user.email})"} }.to_json
+!= @users.collect { |user| {:label => user.name, :value => user.id } }.to_json
