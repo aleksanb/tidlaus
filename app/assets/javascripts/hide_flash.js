@@ -1,1 +1,6 @@
-setTimeout(function() { $(".flash").slideToggle('slow')},4000)
+$(function() {
+  $fl = $(".flash");
+  if ($fl.length > 0 ) { 
+    setTimeout(function() { $fl.slideUp('slow') },4000);
+  }
+});

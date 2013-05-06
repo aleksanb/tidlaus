@@ -1,0 +1,98 @@
+<html>
+    <body>
+        <canvas id="canvas" width="200" height="200">
+        </canvas>
+
+        <script>
+            var ctx = canvas.getContext('2d');
+
+            var accelerationX;
+            var accelerationY;
+            var accelerationZ;
+
+            var alpha;
+            var beta;
+            var gamma;
+
+            var time = 0;
+			var gravity = 1;
+			var boxSize = 50;
+
+            window.ondevicemotion = function(event) {
+                accelerationX = event.accelerationIncludingGravity.x;
+                accelerationY = event.accelerationIncludingGravity.y;
+                accelerationZ = event.accelerationIncludingGravity.z;
+            }
+
+            window.ondeviceorientation = function(event) {
+                alpha = Math.round(event.alpha);
+                beta = Math.round(event.beta);
+                gamma = Math.round(event.gamma);
+            }
+
+			function collisionBox(x,y) {
+				this.x = x;
+				this.y = y;
+				this.dx = 1;
+				this.dy = 1;
+				this.color = 'black';
+
+				this.increment=function() {
+					//this.dy +=(Math.abs(gamma) < 2)? 0:Math.sin(gamma*Math.PI/180);
+                    this.dy += Math.sin(gamma*Math.PI/180);
+                    //this.dx -= (Math.abs(beta) < 2)? 0:Math.sin(beta*Math.PI/180); 
+                    this.dx -= Math.sin(beta*Math.PI/180); 
+					this.x += this.dx;
+					this.y += this.dy;
+				};
+
+				this.update=function() {
+					this.increment();
+					if (this.x + boxSize/2 > canvas.width) {
+						this.dx = -this.dx*0.8;
+						this.x = canvas.width - boxSize/2;
+					}
+					if (this.x - boxSize/2 < 0) {
+						this.dx = -this.dx*0.8;
+						this.x = boxSize/2;
+					}
+					if (this.y + boxSize/2 > canvas.height) {
+						this.dy = -this.dy*0.8;
+						this.y = canvas.height - boxSize/2;
+					}
+					if (this.y - boxSize/2 < 0) {
+						this.dy = -this.dy*0.8;
+						this.y = boxSize/2;
+					}
+				};
+
+				this.render=function() {
+					ctx.fillStyle = this.color;
+					ctx.fillRect(this.x-boxSize/2,this.y-boxSize/2,boxSize,boxSize);
+				};
+			};
+
+			enhanceScreenMaxilizion();
+			window.addEventListener("resize",enhanceScreenMaxilizion);
+
+            var box = new collisionBox(100,100);
+            setInterval(lood,10);
+
+            function lood(){
+				ctx.fillStyle = "white";
+				ctx.fillRect(0,0,canvas.width,canvas.height);
+
+                box.update();
+                box.render();
+                time++;
+            }
+
+			function enhanceScreenMaxilizion() {
+				canvas.height=window.innerHeight;
+				canvas.width=window.innerWidth;
+			};
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,120 @@
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+	<body>
+
+		<canvas id="canvas">
+		</canvas>
+
+		<script>
+			ctx = canvas.getContext('2d');
+			var gravity = 0.2;
+			var time = 0;
+			var boxSize = 25;
+
+			function collisionBox(x,y) {
+				this.x = x;
+				this.y = y;
+				this.dx = 1;
+				this.dy = 1;
+				this.cooldown = false;
+				this.color = 'black';
+
+				this.increment=function() {
+					this.dy += gravity;
+					this.x += this.dx;
+					this.y += this.dy;
+				};
+
+				this.update=function() {
+					this.increment();
+					if (this.x + boxSize/2 > canvas.width) {
+						this.dx = -this.dx;
+						this.x = canvas.width - boxSize/2;
+					}
+					if (this.x - boxSize/2 < 0) {
+						this.dx = -this.dx;
+						this.x = boxSize/2;
+					}
+					if (this.y + boxSize/2 > canvas.height) {
+						this.dy = -this.dy*0.9;
+						this.y = canvas.height - boxSize/2;
+					}
+					if (this.y - boxSize/2 < 0) {
+						this.dy = -this.dy;
+						this.y = boxSize/2;
+					}
+				};
+
+				this.flipX=function() {
+					this.dx = -this.dx;
+				};
+
+				this.flipY=function() {
+					this.dy = -this.dy*0.8;
+				};
+
+				this.render=function() {
+					ctx.fillStyle = this.color;
+					ctx.fillRect(this.x-boxSize/2,this.y-boxSize/2,boxSize,boxSize);
+				};
+			};
+
+			function detectCollisions() {
+				for (var i=0; i<collisionBoxes.length; i++) {
+					for (var j=0; j<collisionBoxes.length; j++) {
+						if (i != j) {
+                            a = collisionBoxes[i];
+                            b = collisionBoxes[j];
+                            distance = Math.sqrt(Math.pow(a.x-b.x,2) + Math.pow(a.y - b.y,2));
+                            if (distance < boxSize) {
+                                a.x = Math.random() * canvas.width;
+                                a.y = Math.random() * canvas.height;
+                                a.dx = 1;
+                                a.dy = 1;
+                                a.color = 'red';
+                                b.color = 'blue';
+                                //P0X = a.dx + b.dx;
+                                //P0Y = a.dy + b.dy;
+                                //VA = Math.sqrt(a.dx*a.dx + b.dx*b.dx);
+                                //VB = Math.sqrt(b.dx*b.dx + b.dy*b.dy);
+                            }
+						}
+					}
+				}
+			}
+
+			enhanceScreenMaxilizion();
+			window.addEventListener("resize",enhanceScreenMaxilizion);
+
+			collisionBoxes = []
+			for (var i = 0; i < 50; i++) {
+				collisionBoxes.push(new collisionBox(Math.random()*(canvas.width)+boxSize/2,Math.random()*canvas.height*0.7,boxSize,boxSize));
+			};
+
+			function lood(){
+				ctx.fillStyle = "white";
+				ctx.fillRect(0,0,canvas.width,canvas.height);
+
+				detectCollisions();
+
+				for (var i in collisionBoxes) {
+					collisionBoxes[i].update();
+					collisionBoxes[i].render();
+				}
+				time++;
+			};
+
+			function enhanceScreenMaxilizion() {
+				canvas.height=window.innerHeight;
+				canvas.width=window.innerWidth;
+			};
+
+            window.requestAnimFrame = window.webkitRequestAnimationFrame;
+            (function animloop(){requestAnimFrame(animloop);lood();})();
+
+		</script>
