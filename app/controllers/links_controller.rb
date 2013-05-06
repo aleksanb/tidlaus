@@ -63,7 +63,7 @@ class LinksController < ApplicationController
   def redirect
     @link = Link.find_by_longurl(params[:id])
     @link.update_attributes!(:views => @link.views+1)
-    redirect_to urlhelper(@link)
+    redirect_to @link
   end
 
 end

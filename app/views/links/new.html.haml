@@ -7,6 +7,6 @@
 	%section
 		%p
 			= semantic_form_for @link do |f|
-				=f.input :shorturl, :label => "http://"
+				=f.input :shorturl, :label => "url"
 				=f.input :length, :as => :select, :collection => [1,2,3]
 				=f.action :submit

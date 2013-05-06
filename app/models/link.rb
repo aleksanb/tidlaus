@@ -24,15 +24,15 @@ class Link < ActiveRecord::Base
   default_scope :order => "created_at DESC"
 
   def generatelink
-    self.shorturl = strip(self.shorturl)
-  	self.longurl = dasloop(strip(shorturl)) #obfuscate(strip(shorturl))*length
+    self.shorturl = self.shorturl.to_s
+  	self.longurl = dasloop(shorturl) 
   end
 
 
   private
 
     def dasloop(url)
-      len = self.length.to_i/64
+      len = self.length.to_i#implement floor division some other day /64
       remainder = self.length.to_i%64
       newurl = ""
       if len > 0

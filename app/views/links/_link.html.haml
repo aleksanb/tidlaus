@@ -5,11 +5,11 @@
 		%h2 From
 		%section
 			%p
-				= "http://tidla.us/#{link.longurl}"
+				= link_to root_url + link.longurl, root_url + link.longurl
 		%h2 To
 		%section
 			%p
-				= "http://#{link.shorturl}"
+				= link_to link.shorturl, link.shorturl
 		%h2 Details
 		%section
 			%p= "Generated #{link.created_at.strftime("%d. %B %Y")}"
