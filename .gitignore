@@ -25,3 +25,5 @@ doc/
 .project
 .DS_Store
 /public/system/images/*
+config/initializers/secret_token.rb
+config/database.yml
