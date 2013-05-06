@@ -7,10 +7,10 @@ gem 'rails'
 
 gem 'sqlite3'
 
+gem 'unicorn'
 #gem 'unicorn'
 gem 'haml'
 gem 'annotate'
-gem 'unicorn'
 gem 'declarative_authorization'
 gem 'formtastic'
 gem 'paperclip'
@@ -35,7 +35,7 @@ group :development do
 end
 
 group :production do
-    #gem 'unicorn'
+    gem 'pg'
 end
 
 group :test do

@@ -48,6 +48,7 @@ authorization do
       :authorization_usages ], :to => :manage
     has_permission_on :pages, :to => :read_static_pages
     has_permission_on :links, :to => :redirect
+    has_permission_on :articles, :to => :hsf
   end
 
 end

@@ -10,6 +10,8 @@ Tidlaus::Application.routes.draw do
   resources :images
   resources :articles
 
+  post "/articles/:id/hsf", :to => "articles#hsf", :as => "hsf"
+
   resources :roles, :only => [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :users_roles, :only => [:create, :destroy]
   end
@@ -30,7 +32,6 @@ Tidlaus::Application.routes.draw do
   match "/python/", :to => "pages#python"
   match "/ajax/", :to => "pages#ajax"
 
-  match '/:id', :to => "links#redirect", :id => /[a-z0-9]{64,}/
-  match '/its', :to => 'its#index', :as => 'its'
+  match '/:id', :to => "links#redirect", :id => /[a-z0-9]{16,}/
 
 end

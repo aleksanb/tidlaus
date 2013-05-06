@@ -10,7 +10,7 @@
 	%section
 		%p
 			= link_to image_tag(image.image.url), image
-		= markdown(image.description)
+		= markdown(image.description, false)
 		%p
 			- if permitted_to? :edit, :images
 				= link_to "Edit", edit_image_path(image)

@@ -3,29 +3,29 @@
   %head
     %title #{@title} | Tidlaus
     = csrf_meta_tags
-    = stylesheet_link_tag 'tidlaus'
+    = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, minimum-scale=1"}
-    %body
-      =render 'layouts/header'
-      - unless flash.empty?
-        - javascript("hide_flash")
-        .container
-          .row
-            -flash.each do |key, value|
-              .flash{:class => key}
-                =value
+    = favicon_link_tag "/assets/favicon.png"
+  %body
+    =render 'layouts/header'
+    - unless flash.empty?
       .container
         .row
-          -if content_for?(:sidebar)
-            .onecol
-            .sevencol#maincontainer
-              =yield
-            .fourcol.last
-              =yield :sidebar
-          -else
-            .onecol.hide
-            .tencol#maincontainer
-              =yield
-            .onecol.last.hide
-    = yield :tail
+          -flash.each do |key, value|
+            .flash{:class => key}
+              =value
+    .container
+      .row
+        -if content_for?(:sidebar)
+          .onecol
+          .sevencol#maincontainer
+            =yield
+          .fourcol.last
+            =yield :sidebar
+        -else
+          .onecol.hide
+          .tencol#maincontainer
+            =yield
+          .onecol.last.hide
+  = yield :tail

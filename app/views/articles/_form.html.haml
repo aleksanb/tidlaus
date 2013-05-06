@@ -1,4 +1,7 @@
 = semantic_form_for @article do |form|
-	= form.input :title
-	= form.input :content
-	= form.action :submit
+  = form.input :title
+  = form.input :content
+  - if !@article.new_record? && ( permitted_to? :hsf, :articles )
+    = link_to "Toggle input sanitizing (Currently #{(@article.html_safe?)? 'unfiltered' : 'filtered'})", hsf_path(@article), :method => :post
+  = form.action :submit
+

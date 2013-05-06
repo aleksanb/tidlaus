@@ -13,6 +13,17 @@ class ArticlesController < ApplicationController
 		@article = Article.new
 	end
 
+  def hsf
+    @article = Article.find(params[:id])
+    @article.html_safe = (@article.html_safe?)? false : true
+    if @article.save
+      flash.now[:success] = "<span class='black'>Success!</span> The article is now html safe.".html_safe
+    else
+      flash.now[:failure] = "<span class='black'>Failure</span> Something went wrong..".    html_safe
+    end
+    render :edit
+  end
+
 	def create
 		@user = current_user
 		@article = @user.articles.create(params[:article])
@@ -20,7 +31,7 @@ class ArticlesController < ApplicationController
 			flash[:success] = "<span class='black'>Success!</span> You submitted an article!".html_safe
 			redirect_to root_path
 		else
-			flash.now[:failure] = "<span class='black'>Invalid</span> image data.".html_safe
+			flash.now[:failure] = "<span class='black'>Invalid</span> article data.".html_safe
 			render :new
 		end
 	end
@@ -44,5 +55,6 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 		@article.destroy
 		flash[:success] = "<span class='black'>Success!</span> You deleted an article!".html_safe
+    redirect_to root_path
 	end
 end

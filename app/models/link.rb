@@ -14,7 +14,6 @@ class Link < ActiveRecord::Base
   attr_accessible :longurl, :shorturl, :length, :views
   attr_accessor :length
 
-
   url_regex = /[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,4}(\/\S*)?$/i
 
   validate :shorturl, :presence => true, 
@@ -33,27 +32,18 @@ class Link < ActiveRecord::Base
   private
 
     def dasloop(url)
-      len = self.length.to_i
-      oldurl = strip(url)
+      len = self.length.to_i/64
+      remainder = self.length.to_i%64
       newurl = ""
-
-      len.times do |i|
-        newurl += obfuscate(url,i)
-      end
-
-      return newurl
-    end
-
-    def strip(url)
-      if url[0,11]=='http://www.'
-        url = url[11,url.length]
-      elsif url[0,7]=='http://'
-        url = url[7,url.length]
-      elsif url[0,4] == 'www.'
-        url = url[4,url.length]
+      if len > 0
+        len.times do |i|
+          newurl += obfuscate(url, rand)
+        end
       else
-        url
+        newurl += obfuscate(url, rand);
+        newurl = newurl[0,remainder-"https://tidla.us/".length]
       end
+      newurl
     end
 
   	def obfuscate(url,int)

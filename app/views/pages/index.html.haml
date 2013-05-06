@@ -1,11 +1,11 @@
 %article
   %section
-    - if permitted_to? :create, :articles
-      %p 
+    %p 
+      - if permitted_to? :create, :articles
         = link_to "Add article", new_article_path
-        - if permitted_to? :create, :images
-          %p
-            = link_to "Add image", new_image_path
+      - if permitted_to? :create, :images
+        %p
+          = link_to "Add image", new_image_path
 
 - @objects.each do |object|
   - if object.is_a?(Image)

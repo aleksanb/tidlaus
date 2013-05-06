@@ -1,16 +1,16 @@
 %article
-	%header
-		%h1
-			= article.title
-		%time{:datetime => article.created_at.strftime("%Y-%m-%d")}= "Created #{article.created_at.strftime("%d. %B %Y %H:%I")}."
-		- if (article.updated_at > article.created_at)
-			%time{:datetime => article.updated_at.strftime("%Y-%m-%d")}= "Updated #{article.updated_at.strftime("%d. %B %Y %H:%I")}."
-		%span.grey.right
-			= link_to article.user.name, article.user
-	%section
-		= markdown(article.content)
-		%p
-			- if permitted_to? :edit, :articles
-				= link_to "Edit", edit_article_path(article)
-			- if permitted_to? :delete, :articles
-				= link_to "Delete", article, :confirm => "Are you sure?", :method => :delete
+  %header
+    %h1
+      = article.title
+    %time{:datetime => article.created_at.strftime("%Y-%m-%d")}= "Created #{article.created_at.strftime("%d. %B %Y %H:%I")}."
+    - if (article.updated_at > article.created_at)
+      %time{:datetime => article.updated_at.strftime("%Y-%m-%d")}= "Updated #{article.updated_at.strftime("%d. %B %Y %H:%I")}."
+    %span.grey.right
+      = link_to article.user.name, article.user
+  %section
+    = markdown(article.content, article.html_safe?)
+    %p
+      - if permitted_to? :edit, :articles
+        = link_to "Edit", edit_article_path(article)
+      - if permitted_to? :delete, :articles
+        = link_to "Delete", article, :confirm => "Are you sure?", :method => :delete

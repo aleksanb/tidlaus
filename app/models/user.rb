@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     user.email.downcase!
   end
 
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   def role_symbols
     (roles || []).map { |r| r.title.to_sym} + [:user]
   end
