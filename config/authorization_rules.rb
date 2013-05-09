@@ -62,7 +62,7 @@ privileges do
   privilege :delete, :includes => :destroy
 
   # allow redirecting
-  privilege :redirect, :includes => [:pycreate, :redirect]
+  privilege :redirect, :includes => [:redirect]
 
   #static pages
   privilege :read_static_pages, :includes => [:index,:about, :magi, :chat, :kaizervirus]

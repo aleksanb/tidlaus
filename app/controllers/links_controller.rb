@@ -18,7 +18,7 @@ class LinksController < ApplicationController
 
   def create
     @title = "Lenkeforlengaren"
-    @link = Link.create(params[:link])
+    @link = Link.new(params[:link])
     if @link.save
       flash[:success] = "<span class='black'>Success!</span> You created a long link!".html_safe
       redirect_to @link

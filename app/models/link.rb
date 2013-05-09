@@ -19,31 +19,34 @@ class Link < ActiveRecord::Base
   validate :shorturl, :presence => true, 
   						:format => {:with => url_regex}
 	validate :length, :presence => true, :on => :create
-  before_create :generatelink
 
+  before_save :generatelink
   default_scope :order => "created_at DESC"
 
   def generatelink
     self.shorturl = self.shorturl.to_s
-  	self.longurl = dasloop(shorturl) 
+  	self.longurl = dasloop(shorturl.to_s, length.to_i) 
   end
-
 
   private
 
-    def dasloop(url)
-      len = self.length.to_i#implement floor division some other day /64
-      remainder = self.length.to_i%64
+    def dasloop(url, length)
       newurl = ""
-      if len > 0
-        len.times do |i|
-          newurl += obfuscate(url, rand)
-        end
+      if length == 0
+        puts "\n\n"
+        length = 1
+        puts "dammit, something failed, setting length to 1: " + length.to_s
       else
-        newurl += obfuscate(url, rand);
-        newurl = newurl[0,remainder-"https://tidla.us/".length]
+        puts "nothing failed, length is: " + length.to_s
       end
+
+      length.times do |i|
+        newurl += obfuscate(url, rand)
+      end
+
       newurl
+      #newurl += obfuscate(url, rand)
+      #newurl = newurl[0,remainder-"https://tidla.us/".length]
     end
 
   	def obfuscate(url,int)
