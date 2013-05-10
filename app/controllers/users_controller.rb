@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(params[:user])
+		@user = User.new(user_params)
 		if @user.save
 			flash[:success] = "Welcome, #{@user.name}.".html_safe
 			session[:user_id] = @user.id
@@ -33,10 +33,7 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		logger.debug @user.inspect
-		logger.debug "heee assaa"
-		if @user.update_attributes(params[:user])
-			#UserMailer.password_reset(@user).deliver
+		if @user.update_attributes(user_params)
 			flash[:success] = "Updated shit!"
 			redirect_to @user
 		else
@@ -47,18 +44,24 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user = User.find(params[:id])
-        unless @user.role_symbols.include?(:admin)
-            @user.destroy
-            flash[:success] = "<span class='black'>Success!</span> You destroyed a user!".html_safe
-            redirect_to users_path
-        else
-            flash[:failure] = "No deleting admins!"
-            redirect_to root_path
-        end
+		unless @user.role_symbols.include?(:admin)
+			@user.destroy
+			flash[:success] = "<span class='black'>Success!</span> You destroyed a user!".html_safe
+			redirect_to users_path
+		else
+			flash[:failure] = "No deleting admins!"
+			redirect_to root_path
+		end
 	end
 
 	def search
-        @users = User.where("name LIKE ?","%#{params[:term]}%")
+		@users = User.where("name LIKE ?","%#{params[:term]}%")
+	end
+
+	private
+
+	def user_params
+		params.require(:user).permit(:name, :password, :password_confirmation, :email)
 	end
 
 end

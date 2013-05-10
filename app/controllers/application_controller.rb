@@ -21,10 +21,6 @@ class ApplicationController < ActionController::Base
 		redirect_to login_path
 	end
 
-	def urlhelper(link)
-		"http://#{link.shorturl}"
-	end
-
 	protected
 
 		def set_current_user_for_model_layer_access_control

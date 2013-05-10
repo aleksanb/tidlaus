@@ -18,7 +18,7 @@ class LinksController < ApplicationController
 
   def create
     @title = "Lenkeforlengaren"
-    @link = Link.new(params[:link])
+    @link = Link.new(link_params)
     if @link.save
       flash[:success] = "<span class='black'>Success!</span> You created a long link!".html_safe
       redirect_to @link
@@ -50,20 +50,26 @@ class LinksController < ApplicationController
     redirect_to links_path
   end
 
-  def pycreate
-    @link = Link.create(:shorturl => params[:shorturl], :length => params[:length])
-    if @link.save
-      render :show, :layout => false
-    else
-      redirect_to root_path
-    end
-
-  end
+  # def pycreate
+  #  @link = Link.create(:shorturl => params[:shorturl], :length => params[:length])
+  #  if @link.save
+  #    render :show, :layout => false
+  #  else
+  #    redirect_to root_path
+  #  end
+  #
+  # end
 
   def redirect
     @link = Link.find_by_longurl(params[:id])
     @link.update_attributes!(:views => @link.views+1)
     redirect_to @link.shorturl
   end
+
+  private
+
+    def link_params
+      params.require(:link).permit(:shorturl, :length)
+    end
 
 end

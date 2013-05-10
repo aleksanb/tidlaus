@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	user = User.authenticate(params[:session][:name],params[:session][:password])
+  	user = User.authenticate(session_params)
   	if user.nil? 
   		flash.now[:failure] = "<span class='black'>Invalid</span> login details.".html_safe
   		render 'new'
@@ -22,4 +22,9 @@ class SessionsController < ApplicationController
   	flash[:success] = "Logged <span class='black'>out.</span>".html_safe
     redirect_to root_path
   end
+
+  private
+    def session_params
+      params.require(:session).permit(:name, :password)
+    end
 end
