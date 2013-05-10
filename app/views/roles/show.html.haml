@@ -7,20 +7,16 @@
 	%header
 		%h1= "Users in #{@role.title}"
 	%section
-		- unless @role.users_roles.empty?
-			- @role.users_roles.each do |users_role|
-				%p
-					= users_role.user.name
-					= link_to "show", users_role.user
-					= link_to "remove", [@role, users_role], :method => :delete, :confirm => "Sure?"
-		- else
-			%p 
-				Ingen brukere, er ikke det trist ass?
+		- @role.users && @role.users.each do |user|
+			%p
+				= user.name
+				= link_to "show", user
+				= link_to "remove", deauthorize_path(@role, user_id: user.id), :method => :delete, :confirm => "Sure?"
 	%header
 		%h1= "Add users to #{@role.title}"
 	%section
 		%p
-			= form_tag role_users_roles_path(@role), :method => :post do
+			= form_tag authorize_path(@role), :method => :post do
 				= label_tag "user_autocomplete", "User"
 				= text_field_tag "user_id", nil, :id => "user_autocomplete"
 				= submit_tag 'Add User'
