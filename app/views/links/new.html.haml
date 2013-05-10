@@ -1,12 +1,19 @@
--content_for :sidebar do 
-	= render 'layouts/sidebar'
-
-%article
-	%header
-		%h1 Lenkeforlengaren
-	%section
-		%p
-			= semantic_form_for @link do |f|
-				=f.input :shorturl, :label => "url"
-				=f.input :length, :as => :select, :collection => [1,2,3]
-				=f.action :submit
+.row
+  %article.fivecol
+    %header 
+      %h1 Lenkeforlengaren 
+    %section
+      %p
+        = semantic_form_for @link do |f|
+          =f.input :shorturl, :label => "url"
+          =f.input :length, :as => :select, :collection => [1,2,3]
+          =f.action :submit
+  %article.fivecol.last
+    %header
+      %h1 Recent longurls
+    %section
+      - @links.each do |link|
+        %p.grey
+          =link_to link.shorturl, link
+      %p
+        = link_to "All links", links_path

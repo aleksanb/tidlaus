@@ -10,10 +10,6 @@ module ApplicationHelper
 		return {}
 	end
 
-	def fetch_recent_links(howmany)
-		@recent_links = Link.order("created_at DESC").limit(howmany)
-	end
-
 	def javascript(*args)
 		content_for(:tail) { javascript_include_tag(*args) }
 	end

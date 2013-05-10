@@ -14,6 +14,7 @@ class LinksController < ApplicationController
   def new
     @title = "Lenkeforlengaren"
     @link = Link.new
+    @links = Link.order("created_at DESC").limit(10)
   end
 
   def create

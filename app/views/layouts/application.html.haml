@@ -17,15 +17,8 @@
               =value
     .container
       .row
-        -if content_for?(:sidebar)
-          .onecol
-          .sevencol#maincontainer
-            =yield
-          .fourcol.last
-            =yield :sidebar
-        -else
-          .onecol.hide
-          .tencol#maincontainer
-            =yield
-          .onecol.last.hide
+        .onecol.hide
+        .tencol#maincontainer
+          =yield
+        .onecol.last
   = yield :tail
