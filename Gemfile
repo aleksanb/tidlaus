@@ -1,33 +1,23 @@
 source 'https://rubygems.org'
 
-gem 'rails'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '~> 4.0.0.rc1'
 
 gem 'sqlite3'
-
 gem 'unicorn'
-#gem 'unicorn'
 gem 'haml'
 gem 'annotate'
 gem 'declarative_authorization'
 gem 'formtastic'
 gem 'paperclip'
-gem 'will_paginate'
 
 #for markdown
 gem 'redcarpet'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'therubyracer'
-  gem 'uglifier'
-  gem 'jquery-ui-rails'
-end
+#gem 'sass-rails'
+#gem 'coffee-rails'
+gem 'uglifier'
+gem 'jquery-ui-rails'
+gem 'therubyracer'
 
 group :development do
     gem 'rspec-rails'
