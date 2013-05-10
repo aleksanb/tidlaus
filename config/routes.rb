@@ -1,9 +1,5 @@
 Tidlaus::Application.routes.draw do
 
-
-
-  match '/py/', :to => "links#pycreate"
-
   resources :links
   resources :pages
   resources :sessions
@@ -12,26 +8,24 @@ Tidlaus::Application.routes.draw do
 
   post "/articles/:id/hsf", :to => "articles#hsf", :as => "hsf"
 
-  resources :roles, :only => [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :users_roles, :only => [:create, :destroy]
-  end
+  resources :roles, :only => [:index, :show, :new, :create, :edit, :update, :destroy]
 
-  match "users/search.:format" => "users#search",
-        :as => :users_search 
-        
+  post "/roles/:id/authorize/" => "roles#authorize", :as => "authorize"
+  delete "/roles/:id/deauthorize/" => "roles#deauthorize", :as => "deauthorize"
+  get "users/search.:format" => "users#search", :as => :users_search
   resources :users
 
-  root :to => "pages#index" #"users#new" #"users#new"
+  get "/" => "pages#index", :as => "root" 
   
-  match "/login", :to => "sessions#new", :as => "login"
-  match "/logout", :to => "sessions#destroy", :as => "logout"
+  get "/login" => "sessions#new", :as => "login"
+  post "/logout" => "sessions#destroy", :as => "logout"
 
-  match "/kaizervirus", :to => "pages#kaizervirus"
-  match "/demos", :to => "pages#demos"
-  match "/chat", :to => "pages#chat"
-  match "/python/", :to => "pages#python"
-  match "/ajax/", :to => "pages#ajax"
+  get "/kaizervirus" => "pages#kaizervirus"
+  get "/demos" => "pages#demos"
+  get "/chat" => "pages#chat"
+  get "/python/" => "pages#python"
+  get "/ajax/" => "pages#ajax"
 
-  match '/:id', :to => "links#redirect", :id => /[a-z0-9]{16,}/
+  get '/:id' => "links#redirect", :id => /[a-z0-9]{16,}/
 
 end
