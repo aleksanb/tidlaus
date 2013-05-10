@@ -13,7 +13,7 @@
 					- if current_user.role_symbols.include?(:admin)
 						= link_to "admin", roles_path, active_page_class(roles_path)
 					= link_to  current_user.name, current_user,active_page_class(current_user)
-					= link_to "Log out", logout_path
+					= link_to "Log out", logout_path, :method => :post
 				- else
 					= link_to "Log in", login_path, active_page_class(login_path)
 					= link_to "Join", new_user_path, active_page_class(new_user_path)
