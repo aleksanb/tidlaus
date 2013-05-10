@@ -13,8 +13,10 @@ gem 'paperclip'
 #for markdown
 gem 'redcarpet'
 
+gem 'turbolinks'
+
 #gem 'sass-rails'
-#gem 'coffee-rails'
+gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-ui-rails'
 gem 'therubyracer'
