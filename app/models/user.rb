@@ -13,10 +13,8 @@
 
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
-  attr_accessible :name, :password, :password_confirmation, :email
 
-  has_many :users_roles, :dependent => :destroy
-  has_many :roles, :through => :users_roles
+  has_and_belongs_to_many :roles, :uniq => true
   has_many :images
   has_many :articles
 
@@ -26,8 +24,7 @@ class User < ActiveRecord::Base
             :uniqueness => {:case_sensitive => false}
             #:format => {:with => username_regex}
   validates :password, :presence => true, :confirmation => true, :length => {:within => 6..40}, :on => :create
-  
-  #validates :email, :presence => true
+  validates :email, :presence => true
 
   default_scope :order => "created_at DESC"
 
@@ -54,9 +51,9 @@ class User < ActiveRecord::Base
 
   class << self
 
-    def authenticate(name,password)
-      user = find_by_name(name.downcase)
-      (user && user.has_password?(password))? user : nil
+    def authenticate(userhash)
+      user = find_by_name(userhash[:name].downcase)
+      (user && user.has_password?(userhash[:password]))? user : nil
     end
 
   end

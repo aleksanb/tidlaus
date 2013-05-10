@@ -9,14 +9,6 @@
 #
 
 class Role < ActiveRecord::Base
-	attr_accessible :title
-	validates_format_of :title, :with => /^[a-z0-9\_\-]+$/
-
-	has_many :users_roles, :dependent => :destroy
-	has_many :users, :through => :users_roles
-  # members_roles :title, :body
-
-  	def users
-  		User.find(self.users_roles.all.collect(&:user_id))
-  	end
+	validates_format_of :title, :with => /\A[a-z0-9\_\-]+\z/
+	has_and_belongs_to_many :users, :uniq => true
 end

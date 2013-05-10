@@ -11,21 +11,23 @@
 #
 
 class Link < ActiveRecord::Base
-  attr_accessible :longurl, :shorturl, :length, :views
   attr_accessor :length
 
   url_regex = /[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,4}(\/\S*)?$/i
 
   validate :shorturl, :presence => true, 
   						:format => {:with => url_regex}
-	validate :length, :presence => true, :on => :create
 
   before_save :generatelink
   default_scope :order => "created_at DESC"
 
   def generatelink
-    self.shorturl = self.shorturl.to_s
-  	self.longurl = dasloop(shorturl.to_s, length.to_i) 
+    unless self.shorturl != nil && self.shorturl.to_s.match(/^http:\/\/|https:\/\//) != nil
+      self.shorturl = "http://"+self.shorturl.to_s
+    else
+      self.shorturl = self.shorturl.to_s
+    end
+  	self.longurl = dasloop(self.shorturl, length.to_i) 
   end
 
   private
@@ -33,11 +35,7 @@ class Link < ActiveRecord::Base
     def dasloop(url, length)
       newurl = ""
       if length == 0
-        puts "\n\n"
         length = 1
-        puts "dammit, something failed, setting length to 1: " + length.to_s
-      else
-        puts "nothing failed, length is: " + length.to_s
       end
 
       length.times do |i|
