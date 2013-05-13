@@ -1,0 +1,7 @@
+%article
+  %header
+    %h1 New Timechallenge
+  %section
+    = semantic_form_for @timechallenge do |f|
+      = f.input :title
+      = f.actions :submit

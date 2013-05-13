@@ -1,0 +1,9 @@
+%article
+  %header
+    %h1
+      Current timechallenges
+  %section
+    - @timechallenges && @timechallenges.each do |t|
+      %h2= link_to t.title, t
+      %p= "#{t.users.count} attending this challenge."
+    %p= link_to "new timechallenge", new_timechallenge_path
