@@ -5,6 +5,11 @@ Tidlaus::Application.routes.draw do
   resources :sessions
   resources :images
   resources :articles
+  resources :timechallenges do
+    resources :participations, :only => [:create, :destroy]
+  end
+
+  get "auth/:provider/callback" => "sessions#create_omniauth"
 
   post "/articles/:id/hsf", :to => "articles#hsf", :as => "hsf"
 

@@ -18,23 +18,36 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :articles
 
+  has_many :attending
+  has_many :timechallenge, :through => :attending
+
   #username_regex = /\A[a-z0-9]*\z/i
 
-  validates :name, :presence => true, :length => {:maximum => 50},
-            :uniqueness => {:case_sensitive => false}
+  validates :name, :presence => true, :length => {:maximum => 50}
             #:format => {:with => username_regex}
-  validates :password, :presence => true, :confirmation => true, :length => {:within => 6..40}, :on => :create
-  validates :email, :presence => true
+  #validates :password, :presence => true, :confirmation => true, :length => {:within => 6..40}, :on => :create
 
   default_scope :order => "created_at DESC"
 
   before_create do |user|
-    encrypt_password
+    #encrypt_password
   end
 
   before_save do |user|
     user.name.downcase!
-    user.email.downcase!
+    #user.email.downcase!
+  end
+
+  def self.create_from_omniauth(auth)
+    find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
+  end
+
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["nickname"]
+    end
   end
 
   def to_param

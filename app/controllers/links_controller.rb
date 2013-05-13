@@ -1,6 +1,7 @@
 class LinksController < ApplicationController 
-  filter_access_to :all
-
+  #filter_access_to :all
+  skip_before_filter :verify_authenticity_token, :only => [:create]
+  
   def index 
     @title = "Lenkeforlengaren"
     @links = Link.all

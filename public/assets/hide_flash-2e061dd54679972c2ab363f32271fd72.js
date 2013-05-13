@@ -1,1 +1,0 @@
-setTimeout(function(){$(".flash").slideToggle("slow")},4e3);

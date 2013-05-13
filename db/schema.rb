@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130510010602) do
+ActiveRecord::Schema.define(version: 20130513202809) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20130510010602) do
     t.datetime "updated_at", null: false
     t.text     "content"
     t.boolean  "html_safe"
+  end
+
+  create_table "attendings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "timechallenge_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "images", force: true do |t|
@@ -53,6 +60,12 @@ ActiveRecord::Schema.define(version: 20130510010602) do
     t.integer "role_id"
   end
 
+  create_table "timechallenges", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.datetime "created_at",         null: false
@@ -60,6 +73,8 @@ ActiveRecord::Schema.define(version: 20130510010602) do
     t.string   "salt"
     t.string   "encrypted_password"
     t.string   "email"
+    t.string   "provider"
+    t.string   "uid"
   end
 
 end
