@@ -1,5 +1,11 @@
 %article
   %header
+    %h1 Sign in through an OAuth provider
+  %section
+    %p
+      = link_to "Sign in with Github", "/auth/github"
+%article
+  %header
     %h1 Log in
   %section
     %p
@@ -9,9 +15,3 @@
         =f.action :submit, :label => "Log in"
     %p
       =link_to "forgotten password?"
-%article
-  %header
-    %h1 Sign in through an OAuth provider
-  %section
-    %p
-      = link_to "Sign in with Github", "/auth/github"
