@@ -4,14 +4,14 @@
   %section
     %p
       = link_to "Sign in with Github", "/auth/github"
-%article
-  %header
-    %h1 Log in
-  %section
-    %p
-      = semantic_form_for :session, :url => sessions_path do |f|
-        =f.input :name
-        =f.input :password
-        =f.action :submit, :label => "Log in"
-    %p
-      =link_to "forgotten password?"
+/%article
+/  %header
+/    %h1 Log in
+/  %section
+/    %p
+/      = semantic_form_for :session, :url => sessions_path do |f|
+/        =f.input :name
+/        =f.input :password
+/        =f.action :submit, :label => "Log in"
+/    %p
+/      =link_to "forgotten password?"
