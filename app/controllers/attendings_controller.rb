@@ -27,5 +27,29 @@ class AttendingsController < ApplicationController
     end
     redirect_to @timechallenge
   end
+
+  def update
+    @attending = Attending.find(params[:id])
+    @attending.status = Status.find(params[:attending][:status])
+
+    respond_to do |format|
+      format.json {
+        logger.debug("bypassing model validations for updating of status")
+        logger.debug("Processing JSON")
+        @attending.save()
+        render :json => @attending
+      }
+      format.all {
+        logger.debug("bypassing model validations for updating of status")
+        if @attending.save!()
+          flash[:success] = "<span class='black'>Success!</span> You updated the attendance!".html_safe
+          redirect_to @attending
+        else
+          flash.now[:failure] = "<span class='black'>Invalid</span> update fields.".html_safe
+          render 'new'
+        end
+      }
+    end
+  end
   
 end

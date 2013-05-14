@@ -7,6 +7,7 @@ class TimechallengesController < ApplicationController
 
   def show
     @timechallenge = Timechallenge.find(params[:id])
+    @statuses = Status.all
   end
 
   def new

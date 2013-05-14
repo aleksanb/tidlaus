@@ -7,6 +7,9 @@ Tidlaus::Application.configure do
   config.cache_classes = false
   config.eager_load = false
 
+  # Worth a shot
+  config.serve_static_assets = true
+
   # Log error messages when you accidentally call methods on nil.
   # config.whiny_nils = true
 

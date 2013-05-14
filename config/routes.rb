@@ -6,20 +6,16 @@ Tidlaus::Application.routes.draw do
   resources :images
   resources :articles
   resources :timechallenges do
-    resources :attendings, :only => [:create, :destroy]
+    resources :attendings
   end
 
   get "auth/:provider/callback" => "sessions#create_omniauth"
-
   post "/articles/:id/hsf", :to => "articles#hsf", :as => "hsf"
-
   resources :roles, :only => [:index, :show, :new, :create, :edit, :update, :destroy]
-
   post "/roles/:id/authorize/" => "roles#authorize", :as => "authorize"
   delete "/roles/:id/deauthorize/" => "roles#deauthorize", :as => "deauthorize"
   get "users/search.:format" => "users#search", :as => :users_search
   resources :users
-
   get "/" => "pages#index", :as => "root" 
   
   get "/login" => "sessions#new", :as => "login"

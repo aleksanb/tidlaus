@@ -31,8 +31,8 @@
               %td= t.title
               %td= t.reward
               %td= t.users.size
-              %td= "#{l(t.deadline, format: :formtastic)}, #{distance_of_time_in_words_to_now(t.deadline)}"
-              %td= "#{l(t.show_deadline, format: :formtastic)}, #{distance_of_time_in_words_to_now(t.show_deadline)}"
+              %td= "#{t.deadline}, #{distance_of_time_in_words_to_now(t.deadline)}"
+              %td= "#{t.show_deadline}, #{distance_of_time_in_words_to_now(t.show_deadline)}"
 
               %td= link_to "Show", t
     - else 

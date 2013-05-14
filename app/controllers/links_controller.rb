@@ -31,8 +31,8 @@ class LinksController < ApplicationController
     @link = Link.new(link_params)
 
     respond_to do |format|
-      format.json {
-        if @link.save
+      format.xhr {
+        if @link.save!
           render :json => @link
         else 
           render :json => {}

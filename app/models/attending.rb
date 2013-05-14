@@ -13,13 +13,18 @@
 class Attending < ActiveRecord::Base
   belongs_to :user
   belongs_to :timechallenge
+  belongs_to :status
 
   validates_presence_of :user_id, :timechallenge_id
 
-  validate :timechallenge_date_passed
-  validate :timechallenge_contains_user
+  validate :timechallenge_date_passed, if: :override
+  validate :timechallenge_contains_user, if: :override
 
   before_destroy :timechallenge_date_passed
+
+  def override
+    new_record?
+  end
 
   private
 

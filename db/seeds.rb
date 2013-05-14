@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+#
+#
+
+puts "Deleting old statuses"
+
+Status.all.each { |s| s.delete }
+
+puts "Deleted statuses"
+
+puts "Creating statuses"
+
+Status.create(status: "Je suis retard")
+Status.create(status: "Je suis un peu retard")
+Status.create(status: "Je ne suis pas retard")
+
+puts "Done"

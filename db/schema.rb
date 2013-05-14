@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130514050910) do
+ActiveRecord::Schema.define(version: 20130514110424) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20130514050910) do
     t.integer  "timechallenge_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status_id"
   end
 
   create_table "images", force: true do |t|
@@ -58,6 +59,12 @@ ActiveRecord::Schema.define(version: 20130514050910) do
   create_table "roles_users", force: true do |t|
     t.integer "user_id"
     t.integer "role_id"
+  end
+
+  create_table "statuses", force: true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "timechallenges", force: true do |t|

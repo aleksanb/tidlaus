@@ -14,3 +14,4 @@
 //= require datetime.js
 //= require hide_flash.js 
 //= require autocomplete.js
+//= require ajax_select_submit.js
