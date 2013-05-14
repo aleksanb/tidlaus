@@ -2,10 +2,21 @@
   %header
     %h1= @timechallenge.title.capitalize
   %section
-    - @timechallenge.users && @timechallenge.users.each do |u|
-      - if u.uid == current_user.uid
-        = link_to "unattend", timechallenge_participation_path(@timechallenge, current_user), :method => :delete
-      %p= u.name + u.provider
+    %p You can attend this timechallenge untill #{l @timechallenge.deadline, format: :formtastic}
+    %table
+      - if @timechallenge.attending.size > 0 
+        %th
+          %tr
+            %td Name
+            %td Authentication method
+            %td Enrolled at
+        - @timechallenge.attending.each do |a|
+          %tr
+            %td= a.user.name
+            %td= a.user.provider
+            %td= l a.created_at, format: :formtastic
+            %td= link_to "Unattend", timechallenge_participation_path(@timechallenge, current_user), method: :delete, data: { confirm: "Unattend this timechallenge?" }
 
-    %p= link_to "attend", timechallenge_participations_path(@timechallenge), :method => :post, :confirm => "Attend this timechallenge?"
-
+    %p= link_to "Attend", timechallenge_participations_path(@timechallenge), method: :post, data: { confirm: "Attend this timechallenge?" }
+    %p= link_to "Back", timechallenges_path
+    %p= link_to "Destroy this timechallenge", timechallenge_path(@timechallenge), method: :delete, data: { confirm: "Are you sure you want to destroy this challenge?"}

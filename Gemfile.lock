@@ -41,6 +41,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    date_validator (0.7.0)
+      activemodel (>= 3)
     declarative_authorization (0.5.7)
     diff-lcs (1.2.4)
     erubis (2.7.0)
@@ -173,6 +175,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   coffee-rails
+  date_validator
   declarative_authorization
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)

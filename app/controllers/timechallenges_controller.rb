@@ -4,6 +4,10 @@ class TimechallengesController < ApplicationController
     @timechallenges = Timechallenge.all
   end
 
+  def show
+    @timechallenge = Timechallenge.find(params[:id])
+  end
+
   def new
     @timechallenge = Timechallenge.new
   end
@@ -11,22 +15,25 @@ class TimechallengesController < ApplicationController
   def create
     @timechallenge = Timechallenge.new(timechallenge_params)
     if @timechallenge.save
-      flash[:success] = "Created timechallenge"
+      flash[:success] = "Created a new timechallenge."
       redirect_to @timechallenge
     else
-      flash.now[:failure] = "Something went wrong"
+      flash.now[:failure] = "Could not create a new timechallenge."
       render 'new'
     end
   end
 
-  def show
-    @timechallenge = Timechallenge.find(params[:id])
+  def destroy
+    timechallenge = Timechallenge.find(params[:id])
+    timechallenge.destroy
+    flash[:success] = "Destroyed timechallenge. Attendants have been notified."
+    redirect_to timechallenge
   end
-
+  
   private
 
     def timechallenge_params
-      params.require(:timechallenge).permit(:title)
+      params.require(:timechallenge).permit(:title, :reward, :deadline)
     end
 
 end

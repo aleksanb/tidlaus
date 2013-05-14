@@ -12,7 +12,8 @@ gem 'paperclip'
 
 #for markdown
 gem 'redcarpet'
-
+#For date validation
+gem 'date_validator'
 gem 'turbolinks'
 
 #gem 'sass-rails'

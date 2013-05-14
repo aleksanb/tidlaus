@@ -1,4 +1,5 @@
 //= require_self
 //= require 1140
 //= require styles
-
+//= require jquery.ui.all
+//= require jquery-ui-timepicker-addon

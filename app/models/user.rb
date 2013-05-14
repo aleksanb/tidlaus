@@ -9,6 +9,8 @@
 #  salt               :string(255)
 #  encrypted_password :string(255)
 #  email              :string(255)
+#  provider           :string(255)
+#  uid                :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -19,25 +21,12 @@ class User < ActiveRecord::Base
   has_many :articles
 
   has_many :attending
-  has_many :timechallenge, :through => :attending
-
-  #username_regex = /\A[a-z0-9]*\z/i
+  has_many :timechallenges, :through => :attending, :dependent => :destroy
 
   validates :name, :presence => true, :length => {:maximum => 50}
-            #:format => {:with => username_regex}
-  #validates :password, :presence => true, :confirmation => true, :length => {:within => 6..40}, :on => :create
 
   default_scope :order => "created_at DESC"
-
-  before_create do |user|
-    #encrypt_password
-  end
-
-  before_save do |user|
-    user.name.downcase!
-    #user.email.downcase!
-  end
-
+  
   def self.create_from_omniauth(auth)
     find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
   end

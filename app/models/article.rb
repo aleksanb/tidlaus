@@ -4,10 +4,11 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string(255)
-#  content    :string(255) skal bli text
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  content    :text
+#  html_safe  :boolean
 #
 
 class Article < ActiveRecord::Base
