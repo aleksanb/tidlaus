@@ -4,5 +4,11 @@ en:
   time:
     formats:
       formtastic: "%d.%m.%Y %H:%M"
+  activerecord:
+    errors:
+      models:
+        timechallenge:
+          attributes:
+            deadline:
+              after: "This date has allready passed."
   hello: "Hello world"
-

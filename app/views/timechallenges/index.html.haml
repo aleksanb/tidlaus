@@ -3,7 +3,37 @@
     %h1
       Current timechallenges
   %section
-    - @timechallenges && @timechallenges.each do |t|
-      %h2= link_to t.title, t
-      %p= "#{t.users.count} attending this challenge."
-    %p= link_to "new timechallenge", new_timechallenge_path
+    %p
+      All challenges are a race to reach p15 room 411 before the time limit.
+    %p
+      09:14:59 is at the moment the latest acceptable finish thime.
+
+  %section
+    - if @timechallenges.size > 0 
+      %table
+        %thead
+          %tr
+            %td
+              %h2 Title
+            %td
+              %h2 Reward
+            %td
+              %h2 Attending
+            %td
+              %h2 Deadline
+            %td
+              %h2 Action
+        %tbody
+          - @timechallenges.each do |t|
+            %tr
+              %td= t.title
+              %td= t.reward
+              %td= t.users.size
+              %td= "#{l(t.deadline, format: :formtastic)}, #{distance_of_time_in_words_to_now(t.deadline)}"
+              %td= link_to "Show", t
+    - else 
+      %p No active challenges. How sad :(
+
+  %section
+    - if permitted_to? :manage, :timechallenges
+      %p= link_to "new timechallenge", new_timechallenge_path

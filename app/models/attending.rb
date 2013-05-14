@@ -24,15 +24,15 @@ class Attending < ActiveRecord::Base
   private
 
   def timechallenge_date_passed
-    if timechallenge and ( Time.now >= timechallenge.deadline )
-      errors.add(:base, "Denne utfordringen har dessverre begynt og påmelding/avmelding har derfor avsluttet.")
+    if timechallenge and ( Time.zone.now >= timechallenge.deadline )
+      errors.add(:base, "This timechallenge has allready started, no further participants are accepted.")
     end
     errors.blank?
   end
 
   def timechallenge_contains_user
     if user.timechallenges.include? timechallenge
-      errors.add(:base, "Du er allerede påmeldt denne utfordringen.")
+      errors.add(:base, "You are allready participating in this timechallenge.")
     end
     errors.blank?
   end

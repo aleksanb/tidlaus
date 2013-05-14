@@ -18,6 +18,9 @@ authorization do
   role :user do
     includes :guest
 
+    has_permission_on :timechallenges, :to => :read
+    has_permission_on :attendings, :to => :manage
+
     has_permission_on :users, :to => :update do
       if_attribute :id => is {user.id}
     end
@@ -45,7 +48,9 @@ authorization do
       :roles, 
       :users_roles,
       :authorization_rules, 
-      :authorization_usages ], :to => :manage
+      :authorization_usages,
+      :attendings,
+      :timechallenges ], :to => :manage
     has_permission_on :pages, :to => :read_static_pages
     has_permission_on :links, :to => :redirect
     has_permission_on :articles, :to => :hsf

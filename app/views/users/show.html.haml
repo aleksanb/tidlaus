@@ -6,10 +6,10 @@
       %p= @user.email
     %p= "You are signed in through #{current_user.provider}"
     %p lorem ipsum dolor sit amet Osv Osv slick as hell.
-    %p
-      - if permitted_to? :edit, :users
-        = link_to 'edit', edit_user_path(@user)
-      - if permitted_to? :destroy, :users
-        = link_to 'destroy', @user, :confirm => "Are you sure?", :method => :delete
+    /%p
+    /  - if permitted_to? :edit, :users
+    /    = link_to 'edit', edit_user_path(@user)
+    /  - if permitted_to? :destroy, :users
+    /    = link_to 'destroy', @user, :confirm => "Are you sure?", :method => :delete
     %p
       = link_to 'all users', users_path

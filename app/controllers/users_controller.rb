@@ -27,32 +27,32 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def edit
-		@user = User.find(params[:id])
-	end
+	# def edit
+	# 	@user = User.find(params[:id])
+	# end
 
-	def update
-		@user = User.find(params[:id])
-		if @user.update_attributes(user_params)
-			flash[:success] = "Updated shit!"
-			redirect_to @user
-		else
-			flash[:failure] = "Didn't update shit!"
-			render :edit
-		end
-	end
+	# def update
+	# 	@user = User.find(params[:id])
+	# 	if @user.update_attributes(user_params)
+	# 		flash[:success] = "Updated shit!"
+	# 		redirect_to @user
+	# 	else
+	# 		flash[:failure] = "Didn't update shit!"
+	# 		render :edit
+	# 	end
+	# end
 
-	def destroy
-		@user = User.find(params[:id])
-		unless @user.role_symbols.include?(:admin)
-			@user.destroy
-			flash[:success] = "<span class='black'>Success!</span> You destroyed a user!".html_safe
-			redirect_to users_path
-		else
-			flash[:failure] = "No deleting admins!"
-			redirect_to root_path
-		end
-	end
+	# def destroy
+	# 	@user = User.find(params[:id])
+	# 	unless @user.role_symbols.include?(:admin)
+	# 		@user.destroy
+	# 		flash[:success] = "<span class='black'>Success!</span> You destroyed a user!".html_safe
+	# 		redirect_to users_path
+	# 	else
+	# 		flash[:failure] = "No deleting admins!"
+	# 		redirect_to root_path
+	# 	end
+	# end
 
 	def search
 		@users = User.where("name LIKE ?","%#{params[:term]}%")

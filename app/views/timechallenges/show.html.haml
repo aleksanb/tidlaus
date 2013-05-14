@@ -2,21 +2,36 @@
   %header
     %h1= @timechallenge.title.capitalize
   %section
-    %p You can attend this timechallenge untill #{l @timechallenge.deadline, format: :formtastic}
-    %table
-      - if @timechallenge.attending.size > 0 
-        %th
+    %p
+      = "You can attend this timechallenge untill #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago' : '' )}) "
+  %section
+    - if @timechallenge.attending.size > 0 
+      %table
+        %thead
           %tr
-            %td Name
-            %td Authentication method
-            %td Enrolled at
-        - @timechallenge.attending.each do |a|
-          %tr
-            %td= a.user.name
-            %td= a.user.provider
-            %td= l a.created_at, format: :formtastic
-            %td= link_to "Unattend", timechallenge_participation_path(@timechallenge, current_user), method: :delete, data: { confirm: "Unattend this timechallenge?" }
-
-    %p= link_to "Attend", timechallenge_participations_path(@timechallenge), method: :post, data: { confirm: "Attend this timechallenge?" }
-    %p= link_to "Back", timechallenges_path
-    %p= link_to "Destroy this timechallenge", timechallenge_path(@timechallenge), method: :delete, data: { confirm: "Are you sure you want to destroy this challenge?"}
+            %td
+              %h2 Name
+            %td
+              %h2 Oauth provider
+            %td
+              %h2 Attended at
+            %td
+              %h2 Result
+            - if permitted_to? :manage, :attendings
+              %td
+                %h2 Action
+        %tbody
+          - @timechallenge.attending.each do |a|
+            %tr
+              %td= a.user.name
+              %td= a.user.provider
+              %td= l a.created_at, format: :formtastic
+              %td= (Time.zone.now >= @timechallenge.deadline)? "Made it" : "Unnown"
+              - if ( permitted_to? :manage, :attendings ) && ( current_user == a.user )
+                %td= link_to "Unattend", timechallenge_attending_path(@timechallenge, a.user.id), method: :delete, data: { confirm: "Unattend this timechallenge?" }
+  %section 
+    - if ( permitted_to? :manage, :attendings ) && ( !current_user.timechallenges.include? @timechallenge )
+      = link_to "Attend", timechallenge_attendings_path(@timechallenge), method: :post, data: { confirm: "Attend this timechallenge?" }
+    - if permitted_to? :manage, :timechallenges
+      = link_to "Destroy this timechallenge", timechallenge_path(@timechallenge), method: :delete, data: { confirm: "Are you sure Youu want to destroy this challenge?"}
+    = link_to "Back", timechallenges_path

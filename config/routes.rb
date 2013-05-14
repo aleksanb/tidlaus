@@ -6,7 +6,7 @@ Tidlaus::Application.routes.draw do
   resources :images
   resources :articles
   resources :timechallenges do
-    resources :participations, :only => [:create, :destroy]
+    resources :attendings, :only => [:create, :destroy]
   end
 
   get "auth/:provider/callback" => "sessions#create_omniauth"
