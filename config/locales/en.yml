@@ -9,6 +9,8 @@ en:
       models:
         timechallenge:
           attributes:
+            show_deadline:
+              not_a_date: "This isn't a valid date."
             deadline:
               after: "This date has allready passed."
   hello: "Hello world"

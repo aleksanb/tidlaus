@@ -3,16 +3,18 @@
     %h1= @timechallenge.title.capitalize
   %section
     %p
-      = "You can attend this timechallenge untill #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago' : '' )}) "
+      = "You can enroll in this timechallenge untill #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.now-@timechallenge.deadline > 0)? ' ago' : '' )}) "
+    %p Show deadline is at #{@timechallenge.show_deadline} (#{distance_of_time_in_words_to_now(@timechallenge.show_deadline) + ((Time.now-@timechallenge.deadline > 0)? ' ago'     : '' )})
   %section
     - if @timechallenge.attending.size > 0 
       %table
         %thead
           %tr
             %td
+            %td
               %h2 Name
             %td
-              %h2 Oauth provider
+              %h2 OAuth
             %td
               %h2 Attended at
             %td
@@ -23,7 +25,10 @@
         %tbody
           - @timechallenge.attending.each do |a|
             %tr
-              %td= a.user.name
+              %td
+                = image_tag avatar_url(a.user)
+              %td
+                = a.user.name
               %td= a.user.provider
               %td= l a.created_at, format: :formtastic
               %td= (Time.zone.now >= @timechallenge.deadline)? "Made it" : "Unnown"

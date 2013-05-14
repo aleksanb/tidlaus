@@ -34,7 +34,7 @@ class TimechallengesController < ApplicationController
   private
 
     def timechallenge_params
-      params.require(:timechallenge).permit(:title, :reward, :deadline)
+      params.require(:timechallenge).permit(:title, :reward, :deadline, :show_deadline)
     end
 
 end
