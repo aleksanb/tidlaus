@@ -1,5 +1,6 @@
 //= require_self
 //= require 1140
-//= require styles
+//= require main
 //= require jquery.ui.all
 //= require jquery-ui-timepicker-addon
+//= require timechallenge

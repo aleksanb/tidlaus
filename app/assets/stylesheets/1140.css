@@ -87,18 +87,6 @@ img {
 	height: auto;
 }
 
-
-/* Smaller screens */
-/*
-@media only screen and (max-width: 769px) {
-
-	body {
-	font-size: 0.8em;
-	line-height: 1.5em;
-	}
-
-/* Mobile */
-
 @media handheld, only screen and (max-width: 769px) {
 
 	body {
