@@ -16,7 +16,7 @@ gem 'redcarpet'
 gem 'date_validator'
 gem 'turbolinks'
 
-#gem 'sass-rails'
+gem 'sass-rails', "~> 4.0.0.rc1"
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-ui-rails'
