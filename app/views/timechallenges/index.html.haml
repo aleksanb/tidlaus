@@ -32,14 +32,14 @@
                 = t.reward
               %td
                 - if (Time.zone.now - t.deadline) < 0
-                  = t.deadline.strftime("%e. %B %H:%M")
+                  = l t.deadline, format: :formtastic
                   %br
                   %i= distance_of_time_in_words_to_now(t.deadline) + " from now"
                 - else
                   = distance_of_time_in_words_to_now(t.deadline) + " ago"
               %td
                 - if (Time.zone.now - t.show_deadline) < 0
-                  = t.show_deadline.strftime("%e. %B %H:%M")
+                  = l t.show_deadline, format: :formtastic
                   %br
                   %i= distance_of_time_in_words_to_now(t.show_deadline) + " from now"
                 - else
