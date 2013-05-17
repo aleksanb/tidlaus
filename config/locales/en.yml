@@ -3,7 +3,7 @@
 en:
   time:
     formats:
-      formtastic: "%d.%m.%Y %H:%M"
+      formtastic: "%d. %B. %H:%M"
   activerecord:
     errors:
       models:

@@ -4,7 +4,7 @@
   %section
     %p
       = "You can enroll in this timechallenge untill #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago' : '' )}) "
-    %p Show deadline is at #{@timechallenge.show_deadline} (#{distance_of_time_in_words_to_now(@timechallenge.show_deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago'     : '' )})
+    %p Show deadline is at #{l @timechallenge.show_deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.show_deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago'     : '' )})
   %section
     - if @timechallenge.attending.size > 0 
       %table
@@ -31,9 +31,8 @@
               %td= l a.created_at, format: :formtastic
               %td
                 = form_for([@timechallenge, a], remote: true) do |f|
-                  = f.select :status, options_from_collection_for_select(@statuses, "id", "status", selected: (a.status && a.status.id || 0)), { include_blank: true, disabled: ((Time.zone.now >= @timechallenge.show_deadline)? true  : true ) }
-                  %div{style: "display:none"}
-                    = f.submit
+                  = f.select :status,  options_from_collection_for_select(@statuses, "id", "status", { selected: (a.status && a.status.id || 0), disabled: true}), { include_blank: true, disabled: ((Time.zone.now >= @timechallenge.show_deadline)? true  : true ) }
+                  = f.submit
               - if ( permitted_to? :manage, :attendings ) && ( current_user == a.user )
                 %td= link_to "Unattend", timechallenge_attending_path(@timechallenge, a.user.id), method: :delete, data: { confirm: "Unattend this timechallenge?" }
 

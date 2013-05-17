@@ -2,7 +2,7 @@ class TimechallengesController < ApplicationController
   filter_access_to :all
 
   def index
-    @timechallenges = Timechallenge.all
+    @timechallenges = Timechallenge.all.reverse_order
   end
 
   def show
