@@ -6,6 +6,7 @@
 
 * {
   word-wrap:break-word;
+  font-family: 'helvetica, arial, sans-serif';
 }
 
 @font-face {
@@ -28,11 +29,11 @@
 }
 
 .bebasneue {font-family:'BebasNeueRegular', sans-serif}
-.lato {font-family:'LatoRegular', Arial, sans-serif}
+.lato {/* font-family:'LatoRegular', Arial, sans-serif */}
 .active {color:black;}
 .right {float:right;}
 
-blockquote {
+blockquote {  
   margin-left:1em;
 }
 
@@ -114,7 +115,6 @@ time {
 section {
   margin-bottom:1em;
   p {
-    font-family:'LatoRegular', Arial, sans-serif;
     margin-bottom:0.5em;
   }
 }
@@ -153,6 +153,28 @@ form {
   max-height:150px;
   background-color:white;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  input[name=commit] {
+    display: none;
+  }
+
+  tbody {
+    tr {
+      &:nth-child(2n + 1) {
+        background-color: #eee;
+      }
+      td {
+        padding: 0.5em;
+      }
+    }
+  }
+}
+
+
 
 /* ============================= */
 /* ! Layout for mobile version   */
