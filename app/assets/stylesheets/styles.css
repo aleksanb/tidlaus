@@ -6,6 +6,7 @@
 
 * {
   word-wrap:break-word;
+  font-family: 'helvetica, arial, sans-serif';
 }
 
 @font-face {
@@ -28,7 +29,7 @@
 }
 
 .bebasneue {font-family:'BebasNeueRegular', sans-serif}
-.lato {font-family:'LatoRegular', Arial, sans-serif}
+.lato {/*font-family:'LatoRegular', Arial, sans-serif*/}
 .active {color:black;}
 .right {float:right;}
 
@@ -109,7 +110,7 @@ section {
 }
 
 section p {
-  font-family:'LatoRegular', Arial, sans-serif;
+  /*font-family:'LatoRegular', Arial, sans-serif;*/
   margin-bottom:0.5em;
 }
 
@@ -148,6 +149,18 @@ form li input, form li select, form li textarea {
   overflow:auto;
   max-height:150px;
   background-color:white;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0.5em;
+}
+
+tbody tr:nth-child(2n + 1) {
+  background-color: #eee;
 }
 
 /* ============================= */

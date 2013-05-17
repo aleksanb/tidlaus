@@ -1,12 +1,12 @@
 %article
   %header
     %h1
-      Current timechallenges
+      Rules
   %section
     %p
       All challenges are a race to reach p15 room 411 before the time limit.
     %p
-      09:14:59 is at the moment the latest acceptable finish thime.
+      The time listed is the last acceptable show time ( on the second ).
 
   %section
     - if @timechallenges.size > 0 
@@ -18,23 +18,32 @@
             %td
               %h2 Reward
             %td
-              %h2 Attending
-            %td
               %h2 Deadline
             %td
               %h2 Show deadline
-            %td
-              %h2 Action
         %tbody
           - @timechallenges.each do |t|
             %tr
-              %td= t.title
-              %td= t.reward
-              %td= t.users.size
-              %td= "#{t.deadline}, #{distance_of_time_in_words_to_now(t.deadline)}"
-              %td= "#{t.show_deadline}, #{distance_of_time_in_words_to_now(t.show_deadline)}"
-
-              %td= link_to "Show", t
+              %td
+                = link_to t.title, t
+                %br
+                %i= t.users.size.to_s + " attending"
+              %td
+                = t.reward
+              %td
+                - if (Time.zone.now - t.deadline) < 0
+                  = t.deadline.strftime("%e. %B %H:%M")
+                  %br
+                  %i= distance_of_time_in_words_to_now(t.deadline) + " from now"
+                - else
+                  = distance_of_time_in_words_to_now(t.deadline) + " ago"
+              %td
+                - if (Time.zone.now - t.show_deadline) < 0
+                  = t.show_deadline.strftime("%e. %B %H:%M")
+                  %br
+                  %i= distance_of_time_in_words_to_now(t.show_deadline) + " from now"
+                - else
+                  = distance_of_time_in_words_to_now(t.show_deadline) + " ago"
     - else 
       %p No active challenges. How sad :(
 
