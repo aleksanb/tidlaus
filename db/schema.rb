@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130514110424) do
+ActiveRecord::Schema.define(version: 20130518161014) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20130514110424) do
     t.string   "email"
     t.string   "provider"
     t.string   "uid"
+    t.string   "image"
   end
 
 end

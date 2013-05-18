@@ -28,7 +28,16 @@ class User < ActiveRecord::Base
   default_scope :order => "created_at DESC"
   
   def self.create_from_omniauth(auth)
-    where(provider: auth["provider"]).where(uid:  auth["uid"]).first || create_with_omniauth(auth)
+    tempuser = where(provider: auth["provider"]).where(uid:  auth["uid"]).first || create_with_omniauth(auth)
+    if tempuser.email != auth["info"]["email"]
+      tempuser.email = auth["info"]["email"]
+      tempuser.save
+    end
+    if tempuser.image != auth["info"]["image"]
+      tempuser.image = auth["info"]["image"]
+      tempuser.save
+    end
+    tempuser
   end
 
   def self.create_with_omniauth(auth)
@@ -37,6 +46,7 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.name = auth["info"]["nickname"]
       user.email = auth["info"]["email"]
+      user.image = auth["info"]["image"]
     end
   end
 
