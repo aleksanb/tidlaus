@@ -3,10 +3,11 @@
     %h1= @timechallenge.title.capitalize
   %section
     %p
-      = "The reward for this timechallenge is #{@timechallenge.reward}"
+      = "Premien for denne tidsutfordringen er #{@timechallenge.reward}"
     %p
-      = "You can enroll in this timechallenge untill #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago' : '' )}) "
-    %p Show deadline is at #{l @timechallenge.show_deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.show_deadline) + ((Time.zone.now-@timechallenge.show_deadline > 0)? ' ago'     : '' )})
+      = "Du kan melde deg på til #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago' : '' )}) "
+    %p
+      = "Oppmøtefristen er #{l @timechallenge.show_deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.show_deadline) + ((Time.zone.now-@timechallenge.show_deadline > 0)? ' ago'     : '' )})"
   %section
     - if @timechallenge.attending.size > 0 
       %table
@@ -14,20 +15,20 @@
           %tr
             %td
             %td
-              %h2 User
+              %h2 Bruker
             %td
-              %h2 Attended at
+              %h2 Påmeldingstidspunkt
             %td
               %h2 Status
             - if ( permitted_to? :manage, :attendings )
               %td
-                %h2 Action
+                %h2 Handling
         %tbody
           - @timechallenge.attending.each do |a|
             %tr
               %td
                 = link_to "https://github.com/" + a.user.name do
-                  = image_tag avatar_url(a.user)
+                  = image_tag a.user.image
               %td
                 = "#{a.user.name} (via "
                 = link_to a.user.provider, "https://github.com/" + a.user.name 
@@ -41,13 +42,13 @@
                       ), { include_blank: true } |
                     = f.submit
                 -else 
-                  Not applicable
+                  = "-"
               - if ( permitted_to? :manage, :attendings ) && ( current_user == a.user )
-                %td= link_to "Unattend", timechallenge_attending_path(@timechallenge, a.user.id), method: :delete, data: { confirm: "Unattend this timechallenge?" }
+                %td= link_to "Meld av", timechallenge_attending_path(@timechallenge, a.user.id), method: :delete, data: { confirm: "Er du sikker på at du vil melde deg av denne tidsutfordringen?" }
 
   %section 
+    = link_to "Tilbake", timechallenges_path
     - if ( permitted_to? :manage, :attendings ) && ( !current_user.timechallenges.include? @timechallenge )
-      = link_to "Attend", timechallenge_attendings_path(@timechallenge), method: :post, data: { confirm: "Attend this timechallenge?" }
+      = link_to "Meld meg på", timechallenge_attendings_path(@timechallenge), method: :post, data: { confirm: "Er du sikker at du vil melde deg på denne tidsutfordringen?" }
     - if permitted_to? :manage, :timechallenges
-      = link_to "Destroy this timechallenge", timechallenge_path(@timechallenge), method: :delete, data: { confirm: "Are you sure Youu want to destroy this challenge?"}
-    = link_to "Back", timechallenges_path
+      = link_to "Slett denne tidsutfordringen", timechallenge_path(@timechallenge), method: :delete, data: { confirm: "Er du sikker på at du vil slette denne tidsutfordringen?"}

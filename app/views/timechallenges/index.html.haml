@@ -1,13 +1,7 @@
 %article
   %header
     %h1
-      Rules
-  %section
-    %p
-      All challenges are a race to reach p15 room 411 before the time limit.
-    %p
-      The time listed is the last acceptable show time ( on the second ).
-
+      Timechalenges
   %section
     - if @timechallenges.size > 0 
       %table
@@ -18,9 +12,9 @@
             %td
               %h2 Reward
             %td
-              %h2 Deadline
+              %h2 Påmeldingsfrist
             %td
-              %h2 Show deadline
+              %h2 Oppmøtefrist
         %tbody
           - @timechallenges.each do |t|
             %tr
@@ -46,6 +40,11 @@
                   = distance_of_time_in_words_to_now(t.show_deadline) + " ago"
     - else 
       %p No active challenges. How sad :(
+  %header
+    %h1
+      Rules
+  %section
+    = render 'rules'
 
   %section
     - if permitted_to? :manage, :timechallenges

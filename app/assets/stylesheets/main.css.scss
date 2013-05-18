@@ -6,7 +6,10 @@
 
 * {
   word-wrap:break-word;
-  font-family: 'helvetica, arial, sans-serif';
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
 }
 
 @font-face {
@@ -25,7 +28,6 @@
   url('BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
   font-weight: normal;
   font-style: normal;
-
 }
 
 .bebasneue {font-family:'BebasNeueRegular', sans-serif}
@@ -48,7 +50,6 @@ a {
   &:hover {
     color:black;
   }
-  
 }
 
 nav a {
@@ -114,9 +115,11 @@ time {
 
 section {
   margin-bottom:1em;
+
   p {
     margin-bottom:0.5em;
   }
+
 }
 
 @mixin form-styling {
@@ -127,9 +130,11 @@ section {
 
 form {
   display:block;
+
   li {
     list-style-type:none;
   }
+
   label {
     font-family:'BebasNeueRegular', sans-serif;
     color: #333;
@@ -138,9 +143,11 @@ form {
     float:left;
     display:inline-block;
   }
+
   input{
     @include form-styling
   }
+
   textarea{
     @include form-styling
   }
@@ -158,12 +165,18 @@ table {
   border-collapse: collapse;
   width: 100%;
 
+  a {
+    text-decoration:underline;
+  }
+  
   input[name=commit] {
     display: none;
   }
+
   td {
     padding: 0.5em;
   }
+
   tbody {
     tr {
       &:nth-child(2n + 1) {
@@ -173,7 +186,29 @@ table {
   }
 }
 
+ul {
+  list-style-type: none;
 
+  li {
+    margin: .5em 0;
+
+    .paragraph-title {
+      display: inline;
+      font-weight: bold;
+    }
+    .paragraph-body {}
+
+    ul {
+      padding-left: 2em;
+    }
+
+    &::before {
+      content: "§";
+      font-weight: bold;
+      padding-right: .3em;
+    }
+  }
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */
