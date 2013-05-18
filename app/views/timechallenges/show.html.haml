@@ -23,8 +23,13 @@
         %tbody
           - @timechallenge.attending.each do |a|
             %tr
-              %td= image_tag avatar_url(a.user)
-              %td= "#{a.user.name} (via #{a.user.provider})"
+              %td
+                = link_to "https://github.com/" + a.user.name do
+                  = image_tag avatar_url(a.user)
+              %td
+                = "#{a.user.name} (via "
+                = link_to a.user.provider, "https://github.com/" + a.user.name 
+                = ")"
               %td= l a.created_at, format: :formtastic
               %td
                 -if Time.zone.now > @timechallenge.show_deadline
