@@ -3,8 +3,10 @@
     %h1= @timechallenge.title.capitalize
   %section
     %p
+      = "The reward for this timechallenge is #{@timechallenge.reward}"
+    %p
       = "You can enroll in this timechallenge untill #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago' : '' )}) "
-    %p Show deadline is at #{l @timechallenge.show_deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.show_deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago'     : '' )})
+    %p Show deadline is at #{l @timechallenge.show_deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.show_deadline) + ((Time.zone.now-@timechallenge.show_deadline > 0)? ' ago'     : '' )})
   %section
     - if @timechallenge.attending.size > 0 
       %table
