@@ -14,7 +14,7 @@ gem 'paperclip'
 gem 'redcarpet'
 #For date validation
 gem 'date_validator'
-gem 'turbolinks'
+#gem 'turbolinks'
 
 gem 'sass-rails', "~> 4.0.0.rc1"
 gem 'coffee-rails'

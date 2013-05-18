@@ -163,8 +163,6 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.1.1)
-      coffee-rails
     tzinfo (0.3.37)
     uglifier (2.1.0)
       execjs (>= 0.3.0)
@@ -198,6 +196,5 @@ DEPENDENCIES
   sass-rails (~> 4.0.0.rc1)
   sqlite3
   therubyracer
-  turbolinks
   uglifier
   unicorn

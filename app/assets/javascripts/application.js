@@ -10,7 +10,6 @@
 //= require jquery.ui.autocomplete
 //= require jquery.ui.slider
 //
-// require turbolinks
 //= require datetime.js
 //= require hide_flash.js 
 //= require autocomplete.js
