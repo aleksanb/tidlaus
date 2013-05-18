@@ -30,7 +30,9 @@ class AttendingsController < ApplicationController
 
   def update
     @attending = Attending.find(params[:id])
-    @attending.status = Status.find(params[:attending][:status])
+    status = params[:attending][:status]
+    status = (status != "")? Status.find_by_id(params[:attending][:status]) : nil
+    @attending.status = status
 
     respond_to do |format|
       format.json {
