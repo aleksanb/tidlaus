@@ -153,11 +153,11 @@ form {
 }
 
 .ui-autocomplete {
-  list-style-type:none;
-  max-width:200px;
-  overflow:auto;
-  max-height:150px;
-  background-color:white;
+  list-style-type: none;
+  max-width: 200px;
+  overflow: auto;
+  max-height: 150px;
+  background-color: white;
 }
 
 table {
@@ -165,7 +165,7 @@ table {
   width: 100%;
 
   a {
-    text-decoration:underline;
+    text-decoration: underline;
   }
   
   input[name=commit] {
@@ -173,7 +173,12 @@ table {
   }
 
   td {
-    padding: 0.5em;
+    padding: .5em;
+    
+    img {
+      vertical-align: middle;
+      margin-right: .5em;
+    }
   }
 
   tbody {

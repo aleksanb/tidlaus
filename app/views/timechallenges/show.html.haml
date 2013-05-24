@@ -5,34 +5,37 @@
     %p
       = "Premien for denne tidsutfordringen er #{@timechallenge.reward}"
     %p
-      = "Du kan melde deg på til #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.zone.now-@timechallenge.deadline > 0)? ' ago' : '' )}) "
+      = "Du kan melde deg på til #{l @timechallenge.deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.deadline) + ((Time.zone.now > @timechallenge.deadline)? ' ago' : '' )}) "
     %p
       = "Oppmøtefristen er #{l @timechallenge.show_deadline, format: :formtastic} (#{distance_of_time_in_words_to_now(@timechallenge.show_deadline) + ((Time.zone.now-@timechallenge.show_deadline > 0)? ' ago'     : '' )})"
+  - if ( permitted_to? :manage, :attendings )
+    %section
+      - if !current_user.timechallenges.include? @timechallenge
+        %h2= link_to "Meld meg på", timechallenge_attendings_path(@timechallenge), method: :post, data: { confirm: "Er du sikker at du vil melde deg på denne tidsutfordringen?" }
+      - elsif Time.zone.now <= @timechallenge.deadline
+        %h2= link_to "Meld meg av", timechallenge_attending_path(@timechallenge, current_user.id), method: :delete, data: { confirm: "Er du sikker på at du vil melde deg av denne tidsutfordringen?" }
+      - else
+        %h2 På og avmelding for dene tidsutfordringen er passert
+  %header
+    %h1 Deltagere
   %section
     - if @timechallenge.attending.size > 0 
       %table
         %thead
           %tr
             %td
-            %td
               %h2 Bruker
             %td
               %h2 Påmeldingstidspunkt
             %td
               %h2 Status
-            - if ( permitted_to? :manage, :attendings )
-              %td
-                %h2 Handling
         %tbody
           - @timechallenge.attending.each do |a|
             %tr
               %td
                 = link_to "https://github.com/" + a.user.name do
                   = image_tag a.user.image
-              %td
-                = "#{a.user.name} (via "
-                = link_to a.user.provider, "https://github.com/" + a.user.name 
-                = ")"
+                  = a.user.name
               %td= l a.created_at, format: :formtastic
               %td
                 -if Time.zone.now > @timechallenge.show_deadline
@@ -43,12 +46,7 @@
                     = f.submit
                 -else 
                   = "-"
-              - if ( permitted_to? :manage, :attendings ) && ( current_user == a.user )
-                %td= link_to "Meld av", timechallenge_attending_path(@timechallenge, a.user.id), method: :delete, data: { confirm: "Er du sikker på at du vil melde deg av denne tidsutfordringen?" }
-
   %section 
     = link_to "Tilbake", timechallenges_path
-    - if ( permitted_to? :manage, :attendings ) && ( !current_user.timechallenges.include? @timechallenge )
-      = link_to "Meld meg på", timechallenge_attendings_path(@timechallenge), method: :post, data: { confirm: "Er du sikker at du vil melde deg på denne tidsutfordringen?" }
     - if permitted_to? :manage, :timechallenges
       = link_to "Slett denne tidsutfordringen", timechallenge_path(@timechallenge), method: :delete, data: { confirm: "Er du sikker på at du vil slette denne tidsutfordringen?"}
